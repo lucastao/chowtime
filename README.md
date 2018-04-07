@@ -1,7 +1,11 @@
 #chowtime
+
 Team Members:
+
 Shaural Patel | patel675@purdue.edu
+
 Lucas Tao | tao63@purdue.edu
+
 Alex Cvelbar | acvelbar@purdue.edu
 
 Project Name: ChowTime
