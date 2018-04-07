@@ -24,8 +24,9 @@ const port = 3000;
 
 
 app.get('/', function(request, response) {
-  response.send("GET request\n");
+  response.sendFile(__dirname + "/src/html/index.html");
 });
+
 
 // Called when a POST request is made to /registerAccount
 app.post('/registerAccount', function(request, response) {
