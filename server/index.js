@@ -24,7 +24,7 @@ const port = 3000;
 
 
 app.get('/', function(request, response) {
-  response.sendFile(__dirname + "/src/html/index.html");
+  response.sendFile(__dirname + "/src/html/login.html");
 });
 
 
