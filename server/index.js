@@ -4,9 +4,8 @@ var admin = require('firebase-admin');
 var path = require('path');
 var serviceAccount = require('./keys/chowtime-cs252-firebase-adminsdk-ug28y-6799120ca9.json');
 
-//var db = admin.database();
 var app = express();
-app.use(body_parser.json());
+app.use(body_parser.urlencoded({extended: true}));
 
 // Constants used for verifying JSON subsmission by users
 const username = "username";
@@ -31,10 +30,30 @@ const port = 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Initializing Firebase SDK
-//admin.initializeApp({
-//	credential: firebase.credential.cert(serviceAccount),
-//	databaseURL: 'https://chowtime-cs252.firebaseio.com'
-//});
+admin.initializeApp({
+	credential: admin.credential.cert(serviceAccount),
+	databaseURL: 'https://chowtime-cs252.firebaseio.com',
+	databaseAuthVariableOverride: {
+		uid: "chowtime-server-worker"
+	}
+});
+
+var db = admin.database();
+var accounts = db.ref('accounts');
+
+accounts.on('child_added', function(snapshot){
+	var post = snapshot.val();
+
+});
+
+// Sample for writing to database
+/*var users = db.ref('users');
+users.set({
+	test_user: {
+		name: "Jack",
+		email: "jack@gmail.com"
+	}
+});*/
 
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname + html + "login.html"));
@@ -48,7 +67,20 @@ app.post('/registerAccount', function(request, response) {
 
 // Called when a POST request is made to /login
 app.post('/login', function(request, response) {
+	if (!request.body) return response.sendStatus(400);
+	if (Object.keys(request.body).length != 3 || !request.body.email || !request.body.password) {
+		return response.status(400).send("Invalid POST request\n");
+	}
+	console.log("Login request received.");
+	console.log(request.body);
 
+	var exists = checkIfUserExists(request.body.email);
+	if (exists) {
+		//response.sendFile();
+
+	} else {
+		return response.status(400).send("Account does not exist.")
+	}
 });
 
 // Called when a POST request is made to /deleteAccount
@@ -91,6 +123,16 @@ function changeEmail(u, p, e, n, response) {
 
 // Helper function for forgotten password
 function forgotPassword(u, e, response) {
+}
+
+// Function to check if user already exists
+function checkIfUserExists(email) {
+	accounts.orderByChild("email").equalTo(email).once('value', function(snapshot){
+		if (snapshot.val() !== null) {
+			return true;
+		}
+		return false;
+	});
 }
 
 app.listen(port, (err) => {
