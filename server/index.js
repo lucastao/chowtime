@@ -1,15 +1,17 @@
 var express = require('express');
 var body_parser = require('body-parser');
-var firebase = require('firebase')
+var admin = require('firebase-admin');
+var path = require('path');
+var serviceAccount = require('./keys/chowtime-cs252-firebase-adminsdk-ug28y-6799120ca9.json');
 
+//var db = admin.database();
 var app = express();
-app.use(body_parser.json())
+app.use(body_parser.json());
 
 // Constants used for verifying JSON subsmission by users
 const username = "username";
 const password = "password";
 const email = "email";
-const newUsername = "newUsername";
 const newPassword = "newPassword";
 const newEmail = "newEmail";
 const host = "localhost";
@@ -20,11 +22,22 @@ const db_password = "password";
 const db_name = "database";
 const db_table = "accounts";
 
+// HTML directory constants
+const html = "/src/html/";
+
 const port = 3000;
 
+// Serve 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Initializing Firebase SDK
+//admin.initializeApp({
+//	credential: firebase.credential.cert(serviceAccount),
+//	databaseURL: 'https://chowtime-cs252.firebaseio.com'
+//});
 
 app.get('/', function(request, response) {
-  response.sendFile(__dirname + "/src/html/login.html");
+  response.sendFile(path.join(__dirname + html + "login.html"));
 });
 
 
