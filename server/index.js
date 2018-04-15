@@ -3,6 +3,11 @@ var body_parser = require('body-parser');
 var admin = require('firebase-admin');
 var path = require('path');
 var serviceAccount = require('./keys/chowtime-cs252-firebase-adminsdk-ug28y-6799120ca9.json');
+var axios = require('axios');		// promise based HTTP client
+var cheerio = require('cheerio');	// jQuery for the server; get content from axios results
+var fs = require('fs');			// write fetched content into json file
+
+require('dotenv').config();
 
 var app = express();
 app.use(body_parser.urlencoded({extended: true}));
@@ -23,6 +28,9 @@ const db_table = "accounts";
 
 // HTML directory constants
 const html = "/src/html/";
+
+// URLs used for web scraping
+const meijer = "https://www.meijer.com/catalog/search_command.cmd?keyword=";
 
 const port = 3000;
 
@@ -61,8 +69,13 @@ app.get('/', function(request, response) {
 
 
 // Called when a POST request is made to /registerAccount
-app.post('/registerAccount', function(request, response) {
-
+app.post('/register', function(request, response) {
+	if (!request.body) return response.sendStatus(400);
+	if (Object.keys(request.body).length != 3 || !request.body.email || !request.body.password) {
+		return response.status(400).send("Invalid POST request\n");
+	}
+	console.log("Register request received.");
+	console.log(request.body);
 });
 
 // Called when a POST request is made to /login
@@ -133,6 +146,41 @@ function checkIfUserExists(email) {
 		}
 		return false;
 	});
+}
+
+// Scrape meijer for food information
+// Their website might use javascript to edit core html after screen has loaded, so prices may vary slightly
+function scrape(food) {
+	food = food.replace(/ /g, "+");		// replacing words with spaces with + (ex. ice cream -> ice+cream)
+	var full_url = meijer + food;
+	var file_name = "./data/" + food + ".json";
+	axios.get(full_url)
+		.then((response) => {
+			if (response.status === 200) {
+				const html = response.data;
+				const $ = cheerio.load(html);
+				var product_cost;
+				var product_name;
+				var list = [];
+
+				var item = $('.product-info').each(function(i, elem){
+					if ($(this).find('.product-price').find('.prod-price-sort').length) {
+						product_cost = $(this).find('.product-price').find('.prod-price-sort').text();
+					} else if ($(this).find('.product-price').find('.prodDtlRegPrice').length) {
+						product_cost = $(this).find('.product-price').find('.prodDtlRegPrice').text();
+					} else if ($(this).find('.product-price').length) {
+						product_cost = $(this).find('.product-price').text();
+					}
+					product_cost = product_cost.replace(/\s/g,'');
+					product_name = $(this).find('.mjr-product-name').find('a').text();
+					list[i] = {
+						name: product_name,
+						cost: product_cost
+					}
+				});
+				fs.writeFile(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
+			}
+		}, (error) => console.log(err) );
 }
 
 app.listen(port, (err) => {
