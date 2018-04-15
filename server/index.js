@@ -7,8 +7,6 @@ var axios = require('axios');		// promise based HTTP client
 var cheerio = require('cheerio');	// jQuery for the server; get content from axios results
 var fs = require('fs');			// write fetched content into json file
 
-require('dotenv').config();
-
 var app = express();
 app.use(body_parser.urlencoded({extended: true}));
 
@@ -31,6 +29,7 @@ const html = "/src/html/";
 
 // URLs used for web scraping
 const meijer = "https://www.meijer.com/catalog/search_command.cmd?keyword=";
+const meijer_location = "https://www.meijer.com/atstores/main.jsp?icmpid=HeaderYourStores";
 
 const port = 3000;
 
@@ -180,7 +179,30 @@ function scrape(food) {
 				});
 				fs.writeFile(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
 			}
-		}, (error) => console.log(err) );
+		}, (error) => console.log(error) );
+}
+
+// Obtains the address of the store that meijers believes you are closest to via ip address
+// Will most likely have issues when the server is running from a location different than the user
+function get_location() {
+	axios.get(meijer_location)
+				.then((response) => {
+					if (response.status === 200) {
+						const html = response.data;
+						const $ = cheerio.load(html);
+						var address = $('[itemprop="streetAddress"]').text();
+						var city = $('[itemprop="addressLocality"]').text();
+						var state = $('[itemprop="addressRegion"]').text();
+						var post_code = $('[itemprop="postalCode"]').text();
+						var phone = $('[itemprop="telephone"]').text();
+						console.log(address);
+						console.log(city);
+						console.log(state);
+						console.log(post_code);
+						console.log(phone);
+					}
+				}, (error) => console.log(error));
+
 }
 
 app.listen(port, (err) => {
