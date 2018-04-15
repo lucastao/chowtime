@@ -24,6 +24,13 @@ const db_table = "accounts";
 // HTML directory constants
 const html = "/src/html/";
 
+//Recipe API vars
+const appID = "ed3ccab7";
+const appKey = "55fc72bbb6b5716033f6cc1d04f92ffe";
+var baseURL = "https://api.edamam.com/search?app_id=ed3ccab7&app_key=55fc72bbb6b5716033f6cc1d04f92ffe&q=";
+var apiFrom = 0;
+var apiTo = 9;
+
 const port = 3000;
 
 // Serve 'public' directory
@@ -132,6 +139,26 @@ function checkIfUserExists(email) {
 			return true;
 		}
 		return false;
+	});
+}
+
+function searchRecipe(queryURL) {
+	fetch(queryURL)
+	.then((resp) => resp.json())
+	.then(function (data) {
+		console.log(queryURL);
+		//for each recipe
+		for(var i = apiFrom; i < apiTo; i++) {
+			var c = $("<div>");
+			c.addClass("card col s12 m6 14");
+			var cimg = $("<img>");
+			cimg.addClass("card-image recipe-image");
+			var img = $("<img>");
+			apiImg = data.hits[i].recipe.image; //recipe image URL
+			img.attr("src", apiImg);
+			cimg.append(img);
+			c.append(cimg);
+		}
 	});
 }
 
