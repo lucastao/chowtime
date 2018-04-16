@@ -1,0 +1,1988 @@
+
+           <li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="519969" autofillparam="ON"><input name="price" type="hidden" value="1.49" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="4070" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Pascal Celery" autofillparam="ON"><input name="itemName" type="hidden" value="Pascal Celery" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/00000/0000000040709_a1c1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/produce/vegetables/celery/pascal-celery-each/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-286/4070.uts" onclick="s.eVar19='4070'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/00000/0000000040709_a1c1_0200.png" alt="Pascal Celery" title="Pascal Celery" data-multimages="0000000040709_a1c1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $1.49<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/produce/vegetables/celery/pascal-celery-each/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-286/4070.uts" onclick="s.eVar19='4070'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Pascal Celery</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/produce/vegetables/celery/pascal-celery-each/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-286/4070.uts" onclick="s.eVar19='4070'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="519967" autofillparam="ON"><input name="price" type="hidden" value="2.69" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="3260103120" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Organic Celery Hearts, 2 pk" autofillparam="ON"><input name="itemName" type="hidden" value="Organic Celery Hearts, 2 pk" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/003/26010/0032601031206_a1c1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/produce/vegetables/celery/celery-hearts-each-or/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-286/3260103120.uts" onclick="s.eVar19='3260103120'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/003/26010/0032601031206_a1c1_0200.png" alt="Organic Celery Hearts 2 pk" title="Organic Celery Hearts 2 pk" data-multimages="0032601031206_a1c1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $2.69<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/produce/vegetables/celery/celery-hearts-each-or/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-286/3260103120.uts" onclick="s.eVar19='3260103120'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Organic Celery Hearts, 2 pk</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/produce/vegetables/celery/celery-hearts-each-or/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-286/3260103120.uts" onclick="s.eVar19='3260103120'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="519968" autofillparam="ON"><input name="price" type="hidden" value="2.69" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="714300454" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Celery Hearts, 24 oz" autofillparam="ON"><input name="itemName" type="hidden" value="Celery Hearts, 24 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/07143/0000714300454_0_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/produce/vegetables/celery/mom-celery-hearts-24-oz/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-286/714300454.uts" onclick="s.eVar19='714300454'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/07143/0000714300454_0_A1C1_0200.png" alt="Celery Hearts 24 oz" title="Celery Hearts 24 oz" data-multimages="0000714300454_0_A1C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $2.69<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/produce/vegetables/celery/mom-celery-hearts-24-oz/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-286/714300454.uts" onclick="s.eVar19='714300454'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Celery Hearts, 24 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/produce/vegetables/celery/mom-celery-hearts-24-oz/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-286/714300454.uts" onclick="s.eVar19='714300454'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore onSale ">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="489700" autofillparam="ON"><input name="price" type="hidden" value="1.69" autofillparam="ON"><input name="salePrice" type="hidden" value="1.0" autofillparam="ON"><input name="upc" type="hidden" value="5100001161" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Campbell's Cream of Celery Condensed Soup, 10.75 oz" autofillparam="ON"><input name="itemName" type="hidden" value="Campbell's Cream of Celery Condensed Soup, 10.75 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/005/10000/0051000011619_a1c1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/pantry/soup/campbell-soup-cream-of-celery-105-oz/t1/t1-865/t2/t2-9978/t3/t3-304/5100001161.uts" onclick="s.eVar19='5100001161'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/005/10000/0051000011619_a1c1_0200.png" alt="Campbells Cream of Celery Condensed Soup 10.75 oz" title="Campbells Cream of Celery Condensed Soup 10.75 oz" data-multimages="0051000011619_a1c1_0200.png,0051000011619_a2c1_0200.png,0051000011619_a8c1_0200.png,0051000011619_a7c1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        Sale</p><div class="triangle"></div>
+                    <p></p>
+
+                    <p class="product-price">
+                        <span class=" prod-price-sort">
+                                        $1.00<span class="uom">
+                                                                /EA</span>
+                                        </span>
+                            </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/pantry/soup/campbell-soup-cream-of-celery-105-oz/t1/t1-865/t2/t2-9978/t3/t3-304/5100001161.uts" onclick="s.eVar19='5100001161'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Campbell's Cream of Celery Condensed Soup, 10.75 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/pantry/soup/campbell-soup-cream-of-celery-105-oz/t1/t1-865/t2/t2-9978/t3/t3-304/5100001161.uts" onclick="s.eVar19='5100001161'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="519517" autofillparam="ON"><input name="price" type="hidden" value="2.89" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="4125005718" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Meijer Celery Sticks, Cut &amp; Ready to Eat, 14 oz" autofillparam="ON"><input name="itemName" type="hidden" value="Meijer Celery Sticks, Cut &amp; Ready to Eat, 14 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/41250/0004125005718_0_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/produce/prepared-produce/fr-celery-sticks-14-oz/t1/t1-865/t2/t2-9971/t3/t3-178/4125005718.uts" onclick="s.eVar19='4125005718'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/41250/0004125005718_0_A1C1_0200.png" alt="Meijer Celery Sticks Cut &amp; Ready to Eat 14 oz" title="Meijer Celery Sticks Cut &amp; Ready to Eat 14 oz" data-multimages="0004125005718_0_A1C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $2.89<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/produce/prepared-produce/fr-celery-sticks-14-oz/t1/t1-865/t2/t2-9971/t3/t3-178/4125005718.uts" onclick="s.eVar19='4125005718'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Meijer Celery Sticks, Cut &amp; Ready to Eat, 14 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/produce/prepared-produce/fr-celery-sticks-14-oz/t1/t1-865/t2/t2-9971/t3/t3-178/4125005718.uts" onclick="s.eVar19='4125005718'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="3753029" autofillparam="ON"><input name="price" type="hidden" value="2.69" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="71373327452" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Meijer Diced Celery &amp; Onion, Cut &amp; Ready to Eat, 7 oz" autofillparam="ON"><input name="itemName" type="hidden" value="Meijer Diced Celery &amp; Onion, Cut &amp; Ready to Eat, 7 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/007/13733/0071373327452_0_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/produce/prepared-produce/fr-diced-celery-onion-7-oz/t1/t1-865/t2/t2-9971/t3/t3-178/71373327452.uts" onclick="s.eVar19='71373327452'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/007/13733/0071373327452_0_A1C1_0200.png" alt="Meijer Diced Celery &amp; Onion Cut &amp; Ready to Eat 7 oz" title="Meijer Diced Celery &amp; Onion Cut &amp; Ready to Eat 7 oz" data-multimages="0071373327452_0_A1C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $2.69<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/produce/prepared-produce/fr-diced-celery-onion-7-oz/t1/t1-865/t2/t2-9971/t3/t3-178/71373327452.uts" onclick="s.eVar19='71373327452'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Meijer Diced Celery &amp; Onion, Cut &amp; Ready to Eat, 7 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/produce/prepared-produce/fr-diced-celery-onion-7-oz/t1/t1-865/t2/t2-9971/t3/t3-178/71373327452.uts" onclick="s.eVar19='71373327452'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="477151" autofillparam="ON"><input name="price" type="hidden" value="1.39" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="4125069214" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Meijer Soup Cream of Celery, 10.5 oz" autofillparam="ON"><input name="itemName" type="hidden" value="Meijer Soup Cream of Celery, 10.5 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/004/12506/0041250692140_a1c1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/pantry/soup/meijer-soup-cream-of-celery-105-oz/t1/t1-865/t2/t2-9978/t3/t3-304/4125069214.uts" onclick="s.eVar19='4125069214'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/004/12506/0041250692140_a1c1_0200.png" alt="Meijer Soup Cream of Celery 10.5 oz" title="Meijer Soup Cream of Celery 10.5 oz" data-multimages="0041250692140_a1c1_0200.png,0041250692140_a7c1_0200.png,0041250692140_a8c1_0200.png,0041250692140_a2c1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $1.39<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/pantry/soup/meijer-soup-cream-of-celery-105-oz/t1/t1-865/t2/t2-9978/t3/t3-304/4125069214.uts" onclick="s.eVar19='4125069214'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Meijer Soup Cream of Celery, 10.5 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/pantry/soup/meijer-soup-cream-of-celery-105-oz/t1/t1-865/t2/t2-9978/t3/t3-304/4125069214.uts" onclick="s.eVar19='4125069214'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore onSale ">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="3009875" autofillparam="ON"><input name="price" type="hidden" value="1.69" autofillparam="ON"><input name="salePrice" type="hidden" value="1.0" autofillparam="ON"><input name="upc" type="hidden" value="5100006569" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Campbell's Healthy Request Cream of Celery Condensed Soup, 10.75 oz" autofillparam="ON"><input name="itemName" type="hidden" value="Campbell's Healthy Request Cream of Celery Condensed Soup, 10.75 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/005/10000/0051000065698_a1c1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/pantry/soup/campbells-hr-soup-cream-of-celery-105-oz/t1/t1-865/t2/t2-9978/t3/t3-304/5100006569.uts" onclick="s.eVar19='5100006569'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/005/10000/0051000065698_a1c1_0200.png" alt="Campbells Healthy Request Cream of Celery Condensed Soup 10.75 oz" title="Campbells Healthy Request Cream of Celery Condensed Soup 10.75 oz" data-multimages="0051000065698_a8c1_0200.png,0051000065698_a1c1_0200.png,0051000065698_a7c1_0200.png,0051000065698_a2c1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        Sale</p><div class="triangle"></div>
+                    <p></p>
+
+                    <p class="product-price">
+                        <span class=" prod-price-sort">
+                                        $1.00<span class="uom">
+                                                                /EA</span>
+                                        </span>
+                            </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/pantry/soup/campbells-hr-soup-cream-of-celery-105-oz/t1/t1-865/t2/t2-9978/t3/t3-304/5100006569.uts" onclick="s.eVar19='5100006569'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Campbell's Healthy Request Cream of Celery Condensed Soup, 10.75 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/pantry/soup/campbells-hr-soup-cream-of-celery-105-oz/t1/t1-865/t2/t2-9978/t3/t3-304/5100006569.uts" onclick="s.eVar19='5100006569'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore onSale ">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="476549" autofillparam="ON"><input name="price" type="hidden" value="1.69" autofillparam="ON"><input name="salePrice" type="hidden" value="1.0" autofillparam="ON"><input name="upc" type="hidden" value="5100011552" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Campbell's Cream of Celery 98% Fat Free Condensed Soup, 10.75 oz" autofillparam="ON"><input name="itemName" type="hidden" value="Campbell's Cream of Celery 98% Fat Free Condensed Soup, 10.75 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/005/10001/0051000115522_a1c1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/pantry/soup/campbell-soup-98-ff-cream-of-celery-105-oz/t1/t1-865/t2/t2-9978/t3/t3-304/5100011552.uts" onclick="s.eVar19='5100011552'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/005/10001/0051000115522_a1c1_0200.png" alt="Campbells Cream of Celery 98% Fat Free Condensed Soup 10.75 oz" title="Campbells Cream of Celery 98% Fat Free Condensed Soup 10.75 oz" data-multimages="0051000115522_a7c1_0200.png,0051000115522_a1c1_0200.png,0051000115522_a8c1_0200.png,0051000115522_a2c1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        Sale</p><div class="triangle"></div>
+                    <p></p>
+
+                    <p class="product-price">
+                        <span class=" prod-price-sort">
+                                        $1.00<span class="uom">
+                                                                /EA</span>
+                                        </span>
+                            </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/pantry/soup/campbell-soup-98-ff-cream-of-celery-105-oz/t1/t1-865/t2/t2-9978/t3/t3-304/5100011552.uts" onclick="s.eVar19='5100011552'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Campbell's Cream of Celery 98% Fat Free Condensed Soup, 10.75 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/pantry/soup/campbell-soup-98-ff-cream-of-celery-105-oz/t1/t1-865/t2/t2-9978/t3/t3-304/5100011552.uts" onclick="s.eVar19='5100011552'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="3405098" autofillparam="ON"><input name="price" type="hidden" value="2.49" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="7315015223" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Dandy Celery Sticks, 1.25lbs" autofillparam="ON"><input name="itemName" type="hidden" value="Dandy Celery Sticks, 1.25lbs" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/73150/0007315015223_0_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/produce/vegetables/celery/celery-sticks-125-lb/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-286/7315015223.uts" onclick="s.eVar19='7315015223'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/73150/0007315015223_0_A1C1_0200.png" alt="Dandy Celery Sticks 1.25lbs" title="Dandy Celery Sticks 1.25lbs" data-multimages="0007315015223_0_A1C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $2.49<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/produce/vegetables/celery/celery-sticks-125-lb/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-286/7315015223.uts" onclick="s.eVar19='7315015223'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Dandy Celery Sticks, 1.25lbs</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/produce/vegetables/celery/celery-sticks-125-lb/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-286/7315015223.uts" onclick="s.eVar19='7315015223'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="3636407" autofillparam="ON"><input name="price" type="hidden" value="2.49" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="85895900429" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Organic Pascal Celery" autofillparam="ON"><input name="itemName" type="hidden" value="Organic Pascal Celery" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/008/58959/0085895900429_0_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/produce/vegetables/pascal-celery-or/t1/t1-865/t2/t2-9971/t3/t3-181/85895900429.uts" onclick="s.eVar19='85895900429'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/008/58959/0085895900429_0_A1C1_0200.png" alt="Organic Pascal Celery" title="Organic Pascal Celery" data-multimages="0085895900429_0_A1C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $2.49<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/produce/vegetables/pascal-celery-or/t1/t1-865/t2/t2-9971/t3/t3-181/85895900429.uts" onclick="s.eVar19='85895900429'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Organic Pascal Celery</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/produce/vegetables/pascal-celery-or/t1/t1-865/t2/t2-9971/t3/t3-181/85895900429.uts" onclick="s.eVar19='85895900429'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="519962" autofillparam="ON"><input name="price" type="hidden" value="1.49" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="4556" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Celery Cabbage, Bunch" autofillparam="ON"><input name="itemName" type="hidden" value="Celery Cabbage, Bunch" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/00000/0000000004556_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="true" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="2.75" autofillparam="ON"><input name="altUom" type="hidden" value="ea" autofillparam="ON"><input name="randomWeight" type="hidden" value="true" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/produce/vegetables/cabbage/celery-cabbage-lb/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-283/4556.uts" onclick="s.eVar19='4556'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/00000/0000000004556_0200.png" alt="Celery Cabbage Bunch" title="Celery Cabbage Bunch" data-multimages="0000000004556_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        <span class="prodDtlRegPrice regular-only">
+                                    $4.10<span class="uom">
+                                                                                                        /bunch</span>
+                                    </span>
+                        </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/produce/vegetables/cabbage/celery-cabbage-lb/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-283/4556.uts" onclick="s.eVar19='4556'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Celery Cabbage, Bunch</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailablehasUom" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/produce/vegetables/cabbage/celery-cabbage-lb/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-283/4556.uts" onclick="s.eVar19='4556'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="519253" autofillparam="ON"><input name="price" type="hidden" value="2.49" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="4585" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Celery Root, Bunch" autofillparam="ON"><input name="itemName" type="hidden" value="Celery Root, Bunch" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/00000/0000000004585_0_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/produce/vegetables/root-vegetables/celery-root-each/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-315/4585.uts" onclick="s.eVar19='4585'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/00000/0000000004585_0_A1C1_0200.png" alt="Celery Root Bunch" title="Celery Root Bunch" data-multimages="0000000004585_0_A1C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $2.49<span class="uom">
+                                                        /bunch</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/produce/vegetables/root-vegetables/celery-root-each/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-315/4585.uts" onclick="s.eVar19='4585'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Celery Root, Bunch</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailablehasUom" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/produce/vegetables/root-vegetables/celery-root-each/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-315/4585.uts" onclick="s.eVar19='4585'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="484490" autofillparam="ON"><input name="price" type="hidden" value="5.49" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="5210000508" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="McCormick Celery Salt,4 oz" autofillparam="ON"><input name="itemName" type="hidden" value="McCormick Celery Salt,4 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/005/21000/0052100005089_a1c1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/pantry/spices-seasonings/mccormick-celery-salt-4-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000508.uts" onclick="s.eVar19='5210000508'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/005/21000/0052100005089_a1c1_0200.png" alt="McCormick Celery Salt4 oz" title="McCormick Celery Salt4 oz" data-multimages="0052100005089_a7c1_0200.png,0052100005089_a1c1_0200.png,0052100005089_a8c1_0200.png,0052100005089_a2c1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $5.49<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/pantry/spices-seasonings/mccormick-celery-salt-4-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000508.uts" onclick="s.eVar19='5210000508'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">McCormick Celery Salt,4 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/pantry/spices-seasonings/mccormick-celery-salt-4-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000508.uts" onclick="s.eVar19='5210000508'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="481025" autofillparam="ON"><input name="price" type="hidden" value="4.39" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="5210000706" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="McCormick Celery Flakes, 0.5 oz" autofillparam="ON"><input name="itemName" type="hidden" value="McCormick Celery Flakes, 0.5 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/52100/0005210000706_1_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/pantry/spices-seasonings/mccormick-celery-flakes-5-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000706.uts" onclick="s.eVar19='5210000706'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/52100/0005210000706_1_A1C1_0200.png" alt="McCormick Celery Flakes 0.5 oz" title="McCormick Celery Flakes 0.5 oz" data-multimages="0005210000706_1_A1C1_0200.png,0005210000706_1_A2C1_0200.png,0005210000706_1_A7C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $4.39<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/pantry/spices-seasonings/mccormick-celery-flakes-5-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000706.uts" onclick="s.eVar19='5210000706'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">McCormick Celery Flakes, 0.5 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/pantry/spices-seasonings/mccormick-celery-flakes-5-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000706.uts" onclick="s.eVar19='5210000706'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="3997429" autofillparam="ON"><input name="price" type="hidden" value="3.99" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="7289411572" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="RITZ KitchenWears Kitchen Towel set in Celery" autofillparam="ON"><input name="itemName" type="hidden" value="RITZ KitchenWears Kitchen Towel set in Celery" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/72894/0007289411572_0_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/home/kitchen/kitchen-linens/ritz-kw-solid-kt-celery/t1/t1-868/t2/t2-9999/t3/t3-455/7289411572.uts" onclick="s.eVar19='7289411572'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/72894/0007289411572_0_A1C1_0200.png" alt="RITZ KitchenWears Kitchen Towel set in Celery" title="RITZ KitchenWears Kitchen Towel set in Celery" data-multimages="0007289411572_0_A1C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $3.99<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/home/kitchen/kitchen-linens/ritz-kw-solid-kt-celery/t1/t1-868/t2/t2-9999/t3/t3-455/7289411572.uts" onclick="s.eVar19='7289411572'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">RITZ KitchenWears Kitchen Towel set in Celery</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/home/kitchen/kitchen-linens/ritz-kw-solid-kt-celery/t1/t1-868/t2/t2-9999/t3/t3-455/7289411572.uts" onclick="s.eVar19='7289411572'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="3010270" autofillparam="ON"><input name="price" type="hidden" value="5.59" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="4010000217" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Spice Island Celery Salt, 3 oz" autofillparam="ON"><input name="itemName" type="hidden" value="Spice Island Celery Salt, 3 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/40100/0004010000217_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/pantry/spices-seasonings/spice-islands-celery-salt-3-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/4010000217.uts" onclick="s.eVar19='4010000217'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/40100/0004010000217_0200.png" alt="Spice Island Celery Salt 3 oz" title="Spice Island Celery Salt 3 oz" data-multimages="0004010000217_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $5.59<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/pantry/spices-seasonings/spice-islands-celery-salt-3-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/4010000217.uts" onclick="s.eVar19='4010000217'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Spice Island Celery Salt, 3 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/pantry/spices-seasonings/spice-islands-celery-salt-3-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/4010000217.uts" onclick="s.eVar19='4010000217'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="3028300" autofillparam="ON"><input name="price" type="hidden" value="1.49" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="4153069632" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Burpee Asian Celery, Chinese Light Green" autofillparam="ON"><input name="itemName" type="hidden" value="Burpee Asian Celery, Chinese Light Green" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/41530/0004153069632_0_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/garden-outdoor-living/live-plants/seed-packets/burpee-asian-celery-chinese-light-green/t1/t1-874/t2/t2-10146/t3/t3-885/4153069632.uts" onclick="s.eVar19='4153069632'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/41530/0004153069632_0_A1C1_0200.png" alt="Burpee Asian Celery Chinese Light Green" title="Burpee Asian Celery Chinese Light Green" data-multimages="0004153069632_0_A1C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $1.49<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/garden-outdoor-living/live-plants/seed-packets/burpee-asian-celery-chinese-light-green/t1/t1-874/t2/t2-10146/t3/t3-885/4153069632.uts" onclick="s.eVar19='4153069632'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Burpee Asian Celery, Chinese Light Green</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/garden-outdoor-living/live-plants/seed-packets/burpee-asian-celery-chinese-light-green/t1/t1-874/t2/t2-10146/t3/t3-885/4153069632.uts" onclick="s.eVar19='4153069632'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="514062" autofillparam="ON"><input name="price" type="hidden" value="2.89" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="71928376393" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Meijer Carrot &amp; Celery Sticks, Cut &amp; Ready to Eat, 14 oz" autofillparam="ON"><input name="itemName" type="hidden" value="Meijer Carrot &amp; Celery Sticks, Cut &amp; Ready to Eat, 14 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/007/19283/0071928376393_0_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/produce/vegetables/carrots/fr-carrot-n-celery-sticks-14-oz/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-284/71928376393.uts" onclick="s.eVar19='71928376393'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/007/19283/0071928376393_0_A1C1_0200.png" alt="Meijer Carrot &amp; Celery Sticks Cut &amp; Ready to Eat 14 oz" title="Meijer Carrot &amp; Celery Sticks Cut &amp; Ready to Eat 14 oz" data-multimages="0071928376393_0_A1C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $2.89<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/produce/vegetables/carrots/fr-carrot-n-celery-sticks-14-oz/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-284/71928376393.uts" onclick="s.eVar19='71928376393'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Meijer Carrot &amp; Celery Sticks, Cut &amp; Ready to Eat, 14 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/produce/vegetables/carrots/fr-carrot-n-celery-sticks-14-oz/t1/t1-865/t2/t2-9971/t3/t3-181/t4/t4-284/71928376393.uts" onclick="s.eVar19='71928376393'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="489610" autofillparam="ON"><input name="price" type="hidden" value="4.89" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="5210000218" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="McCormick Whole Celery Seed, 0.95 oz" autofillparam="ON"><input name="itemName" type="hidden" value="McCormick Whole Celery Seed, 0.95 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/005/21000/0052100002187_a1c1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/pantry/spices-seasonings/mccormick-celery-seed-whole-95-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000218.uts" onclick="s.eVar19='5210000218'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/005/21000/0052100002187_a1c1_0200.png" alt="McCormick Whole Celery Seed 0.95 oz" title="McCormick Whole Celery Seed 0.95 oz" data-multimages="0052100002187_a2c1_0200.png,0052100002187_a8c1_0200.png,0052100002187_a7c1_0200.png,0052100002187_a1c1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $4.89<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/pantry/spices-seasonings/mccormick-celery-seed-whole-95-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000218.uts" onclick="s.eVar19='5210000218'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">McCormick Whole Celery Seed, 0.95 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/pantry/spices-seasonings/mccormick-celery-seed-whole-95-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000218.uts" onclick="s.eVar19='5210000218'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="491677" autofillparam="ON"><input name="price" type="hidden" value="5.49" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="5210000469" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="McCormick Gourmet Organic Celery Seed, 1.62 oz" autofillparam="ON"><input name="itemName" type="hidden" value="McCormick Gourmet Organic Celery Seed, 1.62 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/52100/0005210000469_0_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/pantry/spices-seasonings/mccormick-org-celery-seed-162-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000469.uts" onclick="s.eVar19='5210000469'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/52100/0005210000469_0_A1C1_0200.png" alt="McCormick Gourmet Organic Celery Seed 1.62 oz" title="McCormick Gourmet Organic Celery Seed 1.62 oz" data-multimages="0005210000469_0_A8C1_0200.png,0005210000469_0_A2C1_0200.png,0005210000469_0_A1C1_0200.png,0005210000469_0_A7C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $5.49<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/pantry/spices-seasonings/mccormick-org-celery-seed-162-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000469.uts" onclick="s.eVar19='5210000469'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">McCormick Gourmet Organic Celery Seed, 1.62 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/pantry/spices-seasonings/mccormick-org-celery-seed-162-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000469.uts" onclick="s.eVar19='5210000469'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="3010269" autofillparam="ON"><input name="price" type="hidden" value="5.79" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="4010000218" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Spice Islands Whole Celery Seed, 2.2 oz" autofillparam="ON"><input name="itemName" type="hidden" value="Spice Islands Whole Celery Seed, 2.2 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/004/01000/0040100002184_a1c1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/pantry/spices-seasonings/spice-islands-celery-seed-whole-220-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/4010000218.uts" onclick="s.eVar19='4010000218'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/004/01000/0040100002184_a1c1_0200.png" alt="Spice Islands Whole Celery Seed 2.2 oz" title="Spice Islands Whole Celery Seed 2.2 oz" data-multimages="0040100002184_a1c1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $5.79<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/pantry/spices-seasonings/spice-islands-celery-seed-whole-220-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/4010000218.uts" onclick="s.eVar19='4010000218'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Spice Islands Whole Celery Seed, 2.2 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/pantry/spices-seasonings/spice-islands-celery-seed-whole-220-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/4010000218.uts" onclick="s.eVar19='4010000218'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="3997417" autofillparam="ON"><input name="price" type="hidden" value="3.99" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="7289421572" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="2 Pack RITZ KitchenWears Dish Cloth set in Celery" autofillparam="ON"><input name="itemName" type="hidden" value="2 Pack RITZ KitchenWears Dish Cloth set in Celery" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/72894/0007289421572_0_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/home/kitchen/kitchen-linens/ritz-kw-2pc-solid-dc-celery/t1/t1-868/t2/t2-9999/t3/t3-455/7289421572.uts" onclick="s.eVar19='7289421572'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/72894/0007289421572_0_A1C1_0200.png" alt="2 Pack RITZ KitchenWears Dish Cloth set in Celery" title="2 Pack RITZ KitchenWears Dish Cloth set in Celery" data-multimages="0007289421572_0_A1C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $3.99<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/home/kitchen/kitchen-linens/ritz-kw-2pc-solid-dc-celery/t1/t1-868/t2/t2-9999/t3/t3-455/7289421572.uts" onclick="s.eVar19='7289421572'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">2 Pack RITZ KitchenWears Dish Cloth set in Celery</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/home/kitchen/kitchen-linens/ritz-kw-2pc-solid-dc-celery/t1/t1-868/t2/t2-9999/t3/t3-455/7289421572.uts" onclick="s.eVar19='7289421572'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="490307" autofillparam="ON"><input name="price" type="hidden" value="5.49" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="5210000355" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="McCormick Gourmet All Natural Celery Salt, 2.5 oz" autofillparam="ON"><input name="itemName" type="hidden" value="McCormick Gourmet All Natural Celery Salt, 2.5 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/000/52100/0005210000355_1_A1C1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/pantry/spices-seasonings/mccormick-gourmet-celery-salt-25-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000355.uts" onclick="s.eVar19='5210000355'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/000/52100/0005210000355_1_A1C1_0200.png" alt="McCormick Gourmet All Natural Celery Salt 2.5 oz" title="McCormick Gourmet All Natural Celery Salt 2.5 oz" data-multimages="0005210000355_1_A1C1_0200.png,0005210000355_1_A7C1_0200.png,0005210000355_1_A2C1_0200.png,0005210000355_1_A8C1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $5.49<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/pantry/spices-seasonings/mccormick-gourmet-celery-salt-25-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000355.uts" onclick="s.eVar19='5210000355'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">McCormick Gourmet All Natural Celery Salt, 2.5 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/pantry/spices-seasonings/mccormick-gourmet-celery-salt-25-oz/t1/t1-865/t2/t2-9978/t3/t3-1081/5210000355.uts" onclick="s.eVar19='5210000355'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script><li class="thumbFlexChild instore">
+    <div class="thumbFlexContainer">
+        <form class="add-product" action="/checkout/add_item_to_order.cmd" name="add-product"><input type="hidden" name="form_state" value="add-product"><input name="itemId" type="hidden" value="3205563" autofillparam="ON"><input name="price" type="hidden" value="1.0" autofillparam="ON"><input name="salePrice" type="hidden" value="0.0" autofillparam="ON"><input name="upc" type="hidden" value="2700038110" autofillparam="ON"><input name="upcType" type="hidden" value="UPCA" autofillparam="ON"><input name="itemDescription" type="hidden" value="Hunt's 100% Natural Diced Tomatoes Green Pepper, Celery &amp; Onion Tomatoes, 14.5 oz" autofillparam="ON"><input name="itemName" type="hidden" value="Hunt's 100% Natural Diced Tomatoes Green Pepper, Celery &amp; Onion Tomatoes, 14.5 oz" autofillparam="ON"><input id="tierId" name="tierId" type="hidden" value="" autofillparam="ON"><input name="imageUrl" type="hidden" value="https://static.meijer.com/Media/002/70003/0027000381106_a1c1_0200.png" autofillparam="ON"><input name="chokingHazardDetails" type="hidden" value="" autofillparam="ON"><input name="selectedByAltUoM" type="hidden" value="false" autofillparam="ON"><input name="selectedAltWeightEach" type="hidden" value="0.0" autofillparam="ON"><input name="altUom" type="hidden" value="" autofillparam="ON"><input name="randomWeight" type="hidden" value="false" autofillparam="ON"><input name="storeId" type="hidden" value="249" autofillparam="ON"><input name="fulfillmentGroupTypeId" type="hidden" value="1" autofillparam="ON"><div class="thumbnailBorder prod-inner">
+                <div class="mjr_grid">
+                    <div class="mjr_grid-cell ">
+                        </div>
+                    <div class="mjr_grid-cell ">
+                        <ul class="icon-list unavailable" data-tababledrawer_thumbactions="true">
+                            <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToFav  ready" type="button" evt-ignoreclick="false"><i class="icon-meijer_favorite"></i></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-block options-btn  btn-type-addToList  ready" type="button"><i class="icon-meijer_shoppinglist"></i></button>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="thumb-image prod-title">
+                    <a env="secure" href="/product/grocery/pantry/pasta-sauce/tomatoes-paste/hunts-tomatoes-diced-grn-pepper-clry-onion-145-oz/t1/t1-865/t2/t2-9978/t3/t3-303/t4/t4-864/2700038110.uts" onclick="s.eVar19='2700038110'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');"><img class="prod-img" src="//static.meijer.com/Media/002/70003/0027000381106_a1c1_0200.png" alt="Hunts 100% Natural Diced Tomatoes Green Pepper Celery &amp; Onion Tomatoes 14.5 oz" title="Hunts 100% Natural Diced Tomatoes Green Pepper Celery &amp; Onion Tomatoes 14.5 oz" data-multimages="0027000381106_a1c1_0200.png,0027000381106_a8c1_0200.png,0027000381106_a2c1_0200.png,0027000381106_a7c1_0200.png"></a>
+                    </div>
+
+                <div class="product-info">
+
+                    <!--Adding catalina sales reusing meijer sale and clearance data-->
+                    <p class="save-banner-tag contain-space">
+                        </p>
+                    <p class="sale-tag contain-space">
+                        </p>
+
+                    <p class="product-price">
+                        $1.00<span class="uom">
+                                                        /EA</span>
+                                </p>
+
+                        <h3 class="mjr-product-name">
+                            <a href="/product/grocery/pantry/pasta-sauce/tomatoes-paste/hunts-tomatoes-diced-grn-pepper-clry-onion-145-oz/t1/t1-865/t2/t2-9978/t3/t3-303/t4/t4-864/2700038110.uts" onclick="s.eVar19='2700038110'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">Hunt's 100% Natural Diced Tomatoes Green Pepper, Celery &amp; Onion Tomatoes, 14.5 oz</a>
+                        </h3>
+                    <!-- Removing the Choking hazard warning as per the Task 2593 -->
+                        <!--                 <p class="warning mjr_primary has-warning"> -->
+                    <!--                     <i class="icon-meijer_choking"></i>&nbsp;<span>Warning: Choking Hazard</span> -->
+                    <!--                 </p> -->
+                        <div class="thumb-actions notAvailable" data-tababledrawer_thumbactions="true">
+                        <a class="more-details available" href="/product/grocery/pantry/pasta-sauce/tomatoes-paste/hunts-tomatoes-diced-grn-pepper-clry-onion-145-oz/t1/t1-865/t2/t2-9978/t3/t3-303/t4/t4-864/2700038110.uts" onclick="s.eVar19='2700038110'; s.eVar41='Search to PDP'; s.linkTrackVars='pageName,eVar19,eVar41'; s.tl(this,'o','Search Results to PDP');">
+                                <!-- Content in CSS -->
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </form></div>
+</li>
+
+
+
+<script>
+    /*
+    $(".thumbnail-wrapper").hover(
+            function() {
+                $(this).addClass('show');
+                $('.thumb-actions').css('visibility', 'visible');
+            }, function() {
+                $(this).removeClass('show');
+                $('.thumb-actions').css('visibility', 'hidden');
+            }
+    );
+    */
+    
+    $(".hazardAddToCart").off().on('click', function() {
+        var thisItemIndex = $(this).attr('item-index');
+        var hazardInfo = $(this.form).find("input[name='chokingHazardDetails']").val();
+        $.pgwModal({
+            url: '/includes/hazard_item_layer.jsp',
+            modalData : {myVar : thisItemIndex, myDesc : hazardInfo, form:this.form},
+            maxWidth: 900,
+            closeOnBackgroundClick : false,
+            closeOnEscape : false
+        });
+    });
+
+</script>
