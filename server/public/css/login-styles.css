@@ -102,6 +102,7 @@
     margin: 20px 0;
     border-top: 1px solid #CCCCCC;
     position: relative;
+    visibility: hidden;
 }
 .separator-text {
     display: block;
@@ -112,6 +113,10 @@
     padding: 0px 10px;
     background: #FFFFFF;
     color: #8a8a8a;
+    visibility: hidden;
+}
+.hide {
+    visibility: visible;
 }
 .guest-login .guest {
 	margin-top: 5px;
