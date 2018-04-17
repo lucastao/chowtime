@@ -3,6 +3,9 @@ var body_parser = require('body-parser');
 var admin = require('firebase-admin');
 var path = require('path');
 var serviceAccount = require('./keys/chowtime-cs252-firebase-adminsdk-ug28y-6799120ca9.json');
+var axios = require('axios');		// promise based HTTP client
+var cheerio = require('cheerio');	// jQuery for the server; get content from axios results
+var fs = require('fs');			// write fetched content into json file
 
 var app = express();
 app.use(body_parser.urlencoded({extended: true}));
@@ -24,12 +27,18 @@ const db_table = "accounts";
 // HTML directory constants
 const html = "/src/html/";
 
+<<<<<<< HEAD
 //Recipe API vars
 const appID = "ed3ccab7";
 const appKey = "55fc72bbb6b5716033f6cc1d04f92ffe";
 var baseURL = "https://api.edamam.com/search?app_id=ed3ccab7&app_key=55fc72bbb6b5716033f6cc1d04f92ffe&q=";
 var apiFrom = 0;
 var apiTo = 9;
+=======
+// URLs used for web scraping
+const meijer = "https://www.meijer.com/catalog/search_command.cmd?keyword=";
+const meijer_location = "https://www.meijer.com/atstores/main.jsp?icmpid=HeaderYourStores";
+>>>>>>> 08fbf7a2ed3638be4681f1945f53a16c6900e124
 
 const port = 3000;
 
@@ -68,8 +77,13 @@ app.get('/', function(request, response) {
 
 
 // Called when a POST request is made to /registerAccount
-app.post('/registerAccount', function(request, response) {
-
+app.post('/register', function(request, response) {
+	if (!request.body) return response.sendStatus(400);
+	if (Object.keys(request.body).length != 3 || !request.body.email || !request.body.password) {
+		return response.status(400).send("Invalid POST request\n");
+	}
+	console.log("Register request received.");
+	console.log(request.body);
 });
 
 // Called when a POST request is made to /login
@@ -142,6 +156,7 @@ function checkIfUserExists(email) {
 	});
 }
 
+<<<<<<< HEAD
 function searchRecipe(queryURL) {
 	fetch(queryURL)
 	.then((resp) => resp.json())
@@ -160,6 +175,64 @@ function searchRecipe(queryURL) {
 			c.append(cimg);
 		}
 	});
+=======
+// Scrape meijer for food information
+// Their website might use javascript to edit core html after screen has loaded, so prices may vary slightly
+function scrape(food) {
+	food = food.replace(/ /g, "+");		// replacing words with spaces with + (ex. ice cream -> ice+cream)
+	var full_url = meijer + food;
+	var file_name = "./data/" + food + ".json";
+	axios.get(full_url)
+		.then((response) => {
+			if (response.status === 200) {
+				const html = response.data;
+				const $ = cheerio.load(html);
+				var product_cost;
+				var product_name;
+				var list = [];
+
+				var item = $('.product-info').each(function(i, elem){
+					if ($(this).find('.product-price').find('.prod-price-sort').length) {
+						product_cost = $(this).find('.product-price').find('.prod-price-sort').text();
+					} else if ($(this).find('.product-price').find('.prodDtlRegPrice').length) {
+						product_cost = $(this).find('.product-price').find('.prodDtlRegPrice').text();
+					} else if ($(this).find('.product-price').length) {
+						product_cost = $(this).find('.product-price').text();
+					}
+					product_cost = product_cost.replace(/\s/g,'');
+					product_name = $(this).find('.mjr-product-name').find('a').text();
+					list[i] = {
+						name: product_name,
+						cost: product_cost
+					}
+				});
+				fs.writeFile(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
+			}
+		}, (error) => console.log(error) );
+}
+
+// Obtains the address of the store that meijers believes you are closest to via ip address
+// Will most likely have issues when the server is running from a location different than the user
+function get_location() {
+	axios.get(meijer_location)
+				.then((response) => {
+					if (response.status === 200) {
+						const html = response.data;
+						const $ = cheerio.load(html);
+						var address = $('[itemprop="streetAddress"]').text();
+						var city = $('[itemprop="addressLocality"]').text();
+						var state = $('[itemprop="addressRegion"]').text();
+						var post_code = $('[itemprop="postalCode"]').text();
+						var phone = $('[itemprop="telephone"]').text();
+						console.log(address);
+						console.log(city);
+						console.log(state);
+						console.log(post_code);
+						console.log(phone);
+					}
+				}, (error) => console.log(error));
+
+>>>>>>> 08fbf7a2ed3638be4681f1945f53a16c6900e124
 }
 
 app.listen(port, (err) => {
