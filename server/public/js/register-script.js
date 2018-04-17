@@ -13,6 +13,24 @@ function windowOnClick(event) {
         toggleModal();
     }
 }
+function submit(form) {
+	$.ajax({
+		url: "/register",
+		method: "POST",
+		data: {
+			"regEmail": document.getElementsByName("regEmail")[0].value,
+			"regPassword": document.getElementsByName("regPassword")[0].value,
+			"confPassword": document.getElementsByName("conf-password")[0].value
+		},
+		success: function(data) {
+			alert("Account successfully created.");
+		},
+		error: function(error) {
+			alert(error.responseText);
+		}
+	});
+	
+}
 trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
