@@ -34,7 +34,7 @@ const meijer = "https://www.meijer.com/catalog/search_command.cmd?keyword=";
 const meijer_location = "https://www.meijer.com/atstores/main.jsp?icmpid=HeaderYourStores";
 
 // Dynamic scraping allows for parsing based on location
-const dynamic_scrape = false;
+const dynamic_scrape = true;
 
 const port = 3000;
 
@@ -51,7 +51,7 @@ admin.initializeApp({
 });
 
 var db = admin.database();
-var accounts = db.ref('accounts');
+var accounts = db.ref('users');
 
 accounts.on('child_added', function(snapshot){
 	var post = snapshot.val();
@@ -74,12 +74,17 @@ app.get('/', function(request, response) {
 
 // Called when a POST request is made to /registerAccount
 app.post('/register', function(request, response) {
+	console.log(request.body);
 	if (!request.body) return response.sendStatus(400);
-	if (Object.keys(request.body).length != 3 || !request.body.email || !request.body.password) {
+	if (Object.keys(request.body).length != 3 || !request.body.regEmail || !request.body.regPassword || !request.body.confPassword) {
 		return response.status(400).send("Invalid POST request\n");
 	}
+	if (request.body.regPassword.localeCompare(request.body.confPassword) != 0) {
+		return response.status(400).send("Passwords do not match.");
+	}
+	
 	console.log("Register request received.");
-	console.log(request.body);
+	register(request, response);
 });
 
 // Called when a POST request is made to /login
@@ -119,7 +124,37 @@ app.post('/forgotPassword', function(request, response) {
 });
 
 // Helper function that registers a user if username and email does not already exist
-function register(u, p, e, response) {
+function register(request, response) {
+	accounts.once("value", snapshot => {
+		const users = snapshot.val();
+		var counter = 0;
+		snapshot.forEach(function(childSnapshot){
+			var key = childSnapshot.val().email;
+			if (key === request.body.regEmail) {
+				response.status(400).send("User already exists.");
+				return;
+			}
+			if (counter === snapshot.numChildren() - 1) {
+				createAccount(request, response);
+			}
+			counter++;
+		});
+	});
+}
+
+function createAccount(request, response) {
+			var newPostRef = accounts.push();
+			newPostRef.set({
+				email: request.body.regEmail,
+				password: request.body.regPassword
+			}, function(error){
+				if (error) {
+					console.log("Error in registering user.");
+				} else {
+					response.status(200).send("Account registered.");
+				}
+			});
+
 }
 
 // Helper function that verifies user has an account and logs them in
@@ -237,5 +272,5 @@ app.listen(port, (err) => {
     return console.log('Listen error!', err);
   }
   console.log(`Server listening on port ${port}`);
-  scrape("celery");
+  //scrape("celery");
 });
