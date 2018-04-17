@@ -2,10 +2,10 @@
 	<head>
 		<title>Create Login Form Using HTML5 and CSS3 - Parallax Background</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="shortcut icon" href="../../public/img/logo.png"/>
-        <link rel="stylesheet" href="./css/login-styles.css"/>
+		<link rel="shortcut icon" href="./img/logo.png"/>
+		<link rel="stylesheet" href="./css/login-styles.css"/>
+		<link rel="stylesheet" href="./css/register-styles.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 	</head>
 <body>
 
@@ -19,14 +19,15 @@
 				</div>
 				<h3>Login to Your ChowTime Account</h3>
 			</div>
-			<form method="post" action="/login" class="login-form">
+			<!-- login form -->
+			<form method="POST" action="/login" class="login-form">
 				<div class="input-container">
 					<i class="fa fa-envelope"></i>
-					<input type="email" class="input" name="email" placeholder="Email"/>
+					<input type="email" class="input" name="email" placeholder="Email" required/>
 				</div>
 				<div class="input-container">
 					<i class="fa fa-lock"></i>
-					<input type="password"  id="login-password" class="input" name="password" placeholder="Password"/>
+					<input type="password"  id="login-password" class="input" name="password" placeholder="Password"  required/>
 				</div>
 				<div class="rememberme-container">
 					<input type="checkbox" name="rememberme" id="rememberme"/>
@@ -34,10 +35,35 @@
 					<a class="forgot-password" href="#">Forgot Password?</a>
 				</div>
 				<input type="submit" name="login" value="Login" class="button"/>
-				<a href="#" class="register">Register</a>
+				<a href="#" class="register trigger">Create an Account</a>
+				
 			</form>
-			<div class="separator">
-					<span class="separator-text">OR</span>
+			<!-- Registration popup -->
+			<div class="modal">
+					<div class="modal-content">
+						<span class="close-button">&times;</span>
+						<div class="login-form-header">
+							<h3>Create an Account</h3>
+							<br/>
+						</div>
+						<form method="POST" action="/register" class="login-form">
+							<div class="input-container">
+								<label class="reg-label" for="regEmail">Email:</label>
+								<input class="reg-input" type="email" placeholder="Enter your email address..." name="regEmail" required>
+								<br/><br/>
+								<label class="reg-label" for="regPassword">Password:</label>
+								<input class="reg-input" type="password" placeholder="Enter Password" name="regPassword" required>
+								<br/><br/>
+								<label class="reg-label" for="conf-password">Confirm Password:</label>
+								<input class="reg-input" type="password" placeholder="Confirm Password" name="conf-password" required>
+								<br/><br/>
+							</div>
+								<input type="submit" name="register" value="Register" class="button"/>
+						</form>
+					</div>
+				</div>
+			<div id="sepId" class="separator hide">
+					<span id="sepTextId" class="separator-text hide">OR</span>
 			</div>
 			<div class="guest-login">
 				<a href="#guest" class="guest">
@@ -47,4 +73,5 @@
 		</div>
 	</div>
 </body>
+<script src="./js/register-script.js"></script>
 </html>
