@@ -10,6 +10,8 @@ var fs = require('fs');			// write fetched content into json file
 var app = express();
 app.use(body_parser.urlencoded({extended: true}));
 
+const { exec } = require('child_process');
+
 // Constants used for verifying JSON subsmission by users
 const username = "username";
 const password = "password";
@@ -39,6 +41,9 @@ var apiTo = 9;
 const meijer = "https://www.meijer.com/catalog/search_command.cmd?keyword=";
 const meijer_location = "https://www.meijer.com/atstores/main.jsp?icmpid=HeaderYourStores";
 >>>>>>> 08fbf7a2ed3638be4681f1945f53a16c6900e124
+
+// Dynamic scraping allows for parsing based on location
+const dynamic_scrape = false;
 
 const port = 3000;
 
@@ -185,8 +190,32 @@ function scrape(food) {
 	axios.get(full_url)
 		.then((response) => {
 			if (response.status === 200) {
-				const html = response.data;
-				const $ = cheerio.load(html);
+				var $;
+				if (dynamic_scrape) {
+					var command = 'casperjs.exe dynamic_scrape.js ' + food;
+					console.log("command: " + command);
+					exec(command, (err, stdout, stderr) => {
+						console.log('stdout: ' + stdout);
+						console.log('stderr: ' + stderr);
+						if (err !== null) {
+							console.log('exec error: ' + err);
+						}
+
+						console.log("Finished");
+						$ = cheerio.load(fs.readFileSync('./scraped.html'));
+						parse($, file_name);
+					});
+					console.log("temp");
+				} else {
+					const html = response.data;
+					$ = cheerio.load(html);
+					parse($, file_name);
+				}
+			}
+		}, (error) => console.log(error) );
+}
+
+function parse($, file_name) {
 				var product_cost;
 				var product_name;
 				var list = [];
@@ -207,8 +236,7 @@ function scrape(food) {
 					}
 				});
 				fs.writeFile(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
-			}
-		}, (error) => console.log(error) );
+
 }
 
 // Obtains the address of the store that meijers believes you are closest to via ip address
@@ -231,8 +259,11 @@ function get_location() {
 						console.log(phone);
 					}
 				}, (error) => console.log(error));
+<<<<<<< HEAD
 
 >>>>>>> 08fbf7a2ed3638be4681f1945f53a16c6900e124
+=======
+>>>>>>> 3f8f661e25b1d2027a45604983fdfd657ee928d0
 }
 
 app.listen(port, (err) => {
@@ -240,4 +271,5 @@ app.listen(port, (err) => {
     return console.log('Listen error!', err);
   }
   console.log(`Server listening on port ${port}`);
+  scrape("celery");
 });
