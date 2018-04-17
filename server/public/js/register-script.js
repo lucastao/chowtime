@@ -34,4 +34,3 @@ function submit(form) {
 trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
-	
