@@ -4,7 +4,7 @@ var admin = require('firebase-admin');
 var path = require('path');
 var serviceAccount = require('./keys/chowtime-cs252-firebase-adminsdk-ug28y-6799120ca9.json');
 var axios = require('axios');		// promise based HTTP client
-var cheerio = require('cheerio');	// jQuery for the server; get content from axios results
+//var cheerio = require('cheerio');	// jQuery for the server; get content from axios results
 var fs = require('fs');			// write fetched content into json file
 
 var app = express();
@@ -41,9 +41,9 @@ const meijer = "https://www.meijer.com/catalog/search_command.cmd?keyword=";
 const meijer_location = "https://www.meijer.com/atstores/main.jsp?icmpid=HeaderYourStores";
 
 // Dynamic scraping allows for parsing based on location
-const dynamic_scrape = true;
+const dynamic_scrape = false;
 
-const port = 3000;
+const port = process.env || 3000;
 
 // Serve 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -103,13 +103,7 @@ app.post('/login', function(request, response) {
 	console.log("Login request received.");
 	console.log(request.body);
 
-	var exists = checkIfUserExists(request.body.email);
-	if (exists) {
-		//response.sendFile();
-
-	} else {
-		return response.status(400).send("Account does not exist.")
-	}
+	login(request, response);
 });
 
 // Called when a POST request is made to /deleteAccount
@@ -132,6 +126,8 @@ app.post('/forgotPassword', function(request, response) {
 
 // Helper function that registers a user if username and email does not already exist
 function register(request, response) {
+	console.log("Request.ip: " +request.ip);
+	console.log(request.headers['x-forwarded-for'] || request.connection.remoteAddress);
 	accounts.once("value", snapshot => {
 		const users = snapshot.val();
 		var counter = 0;
@@ -165,7 +161,15 @@ function createAccount(request, response) {
 }
 
 // Helper function that verifies user has an account and logs them in
-function login(u, p, response) {
+function login(request, response) {
+	var exists = checkIfUserExists(request);
+	console.log(exists);
+	if (exists != null) {
+		//response.sendFile();
+		console.log("check password");
+	} else {
+		return response.status(400).send("Account does not exist.")
+	}
 }
 
 // Helper function that deletes an account
@@ -185,7 +189,25 @@ function forgotPassword(u, e, response) {
 }
 
 // Function to check if user already exists
-function checkIfUserExists(email) {
+function checkIfUserExists(request) {
+	accounts.once("value", snapshot => {
+		const users = snapshot.val();
+		var counter = 0;
+		snapshot.forEach(function(childSnapshot){
+			var key = childSnapshot.val().email;
+			console.log(key);
+			console.log(request.body.email);
+			if (key === request.body.email) {
+				console.log("Password " + childSnapshot.val().password);
+				return childSnapshot.val().password;
+			}
+			if (counter === snapshot.numChildren() - 1) {
+				return null;
+			}
+			counter++;
+		});
+	});
+
 	accounts.orderByChild("email").equalTo(email).once('value', function(snapshot){
 		if (snapshot.val() !== null) {
 			return true;
@@ -216,11 +238,15 @@ function searchRecipe(queryURL) {
 
 // Scrape meijer for food information
 // Their website might use javascript to edit core html after screen has loaded, so prices may vary slightly
-function scrape(food) {
+function scrape(food, ip) {
 	food = food.replace(/ /g, "+");		// replacing words with spaces with + (ex. ice cream -> ice+cream)
 	var full_url = meijer + food;
 	var file_name = "./data/" + food + ".json";
-	axios.get(full_url)
+	axios({
+		method: 'get',
+		url: full_url,
+		headers: {'X-Forwarded-For': ip}
+	})
 		.then((response) => {
 			if (response.status === 200) {
 				var $;
@@ -274,24 +300,28 @@ function parse($, file_name) {
 
 // Obtains the address of the store that meijers believes you are closest to via ip address
 // Will most likely have issues when the server is running from a location different than the user
-function get_location() {
-	axios.get(meijer_location)
-				.then((response) => {
-					if (response.status === 200) {
-						const html = response.data;
-						const $ = cheerio.load(html);
-						var address = $('[itemprop="streetAddress"]').text();
-						var city = $('[itemprop="addressLocality"]').text();
-						var state = $('[itemprop="addressRegion"]').text();
-						var post_code = $('[itemprop="postalCode"]').text();
-						var phone = $('[itemprop="telephone"]').text();
-						console.log(address);
-						console.log(city);
-						console.log(state);
-						console.log(post_code);
-						console.log(phone);
-					}
-				}, (error) => console.log(error));
+function get_location(ip) {
+	axios({
+		method: 'get',
+		url: meijer_location,
+		headers: {'X-Forwarded-For': ip}
+	})
+	.then((response) => {
+		if (response.status === 200) {
+			const html = response.data;
+			const $ = cheerio.load(html);
+			var address = $('[itemprop="streetAddress"]').text();
+			var city = $('[itemprop="addressLocality"]').text();
+			var state = $('[itemprop="addressRegion"]').text();
+			var post_code = $('[itemprop="postalCode"]').text();
+			var phone = $('[itemprop="telephone"]').text();
+			console.log(address);
+			console.log(city);
+			console.log(state);
+			console.log(post_code);
+			console.log(phone);
+		}
+	}, (error) => console.log(error));
 }
 
 app.listen(port, (err) => {
@@ -300,4 +330,7 @@ app.listen(port, (err) => {
   }
   console.log(`Server listening on port ${port}`);
   //scrape("celery");
+	//var ip = '64.119.240.0';
+	//var ip = '128.210.106.57';
+	//get_location(ip);
 });
