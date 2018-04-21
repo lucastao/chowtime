@@ -1,4 +1,3 @@
-/* BACKGROUND */
 
 .background {
 	background-image: url('../img/login-bg.jpg');
@@ -12,6 +11,6 @@
     bottom: 0;
 }
 
-.container-fluid {
-    margin-top: 75px;
+.jumbotron {
+    position: relative;
 }
