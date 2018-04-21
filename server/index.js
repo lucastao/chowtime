@@ -43,7 +43,7 @@ const meijer_location = "https://www.meijer.com/atstores/main.jsp?icmpid=HeaderY
 // Dynamic scraping allows for parsing based on location
 const dynamic_scrape = false;
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 6211;
 
 // Serve 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -77,6 +77,10 @@ users.set({
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname + html + "login.html"));
 });
+app.get('/homeGuest', function(request, response) {
+	response.sendFile(path.join(__dirname + html + "home-guest.html"));
+  });
+  
 
 
 // Called when a POST request is made to /registerAccount
