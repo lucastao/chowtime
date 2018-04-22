@@ -238,7 +238,7 @@ function searchRecipe(queryURL) {
 
 			var pRecipe = $("<p>");
 			for (var j = 0; j < data.hits[i].recipe.ingredients.length; j++) {
-				var ingreds = data.hits[i].recipe.ingredients[j];
+				var ingreds = data.hits[i].recipe.ingredients[j].text;
 				var newIng = $("<p>");
 				newIng.text(ingreds)
 				pRecipe.append(newIng);
@@ -278,7 +278,8 @@ function searchRecipe(queryURL) {
 			var cardAction = $("<div>");
 			cardAction.addClass("card-action");
 
-			// Create link to foreign recipie URL for now 
+			// Create link to foreign recipie URL for now
+			//needs to take 
 			var link = $("<a>");
 			link.text("More info");
 			sourceLink = data.hits[i].recipe.url;
@@ -286,8 +287,25 @@ function searchRecipe(queryURL) {
 			// Open recipie in new tab
 			link.attr("target", "_blank");
 
-			$("#recipe-list").append(card);
-
+			//Create button to favorite a recipe
+			var favoriteButton = $("<i>");
+			favoriteButton.addClass("button-action");
+			favoriteButton.attr("data-name", [i]).attr("data-position", "top").attr("data-tooltip", "Click to save recipe for later.");
+			$('.tooltipped').tooltip({ delay: 30 });
+			cardAction.append(link, favoriteButton);
+			cardContent.after(cardAction);
+			
+			$("#recipe-content").append(card);
+			
+			favoriteButton.on("click", function(e)) {
+				var n = $(e.target).data("name");
+				var newFavorite = {
+					name: data.hits[n].recipe.label,
+					ingredients: data.hits[n].recipe.ingredientLines,
+					image: data.hits[n].recipe.image
+				};
+				//add newFavorite to database 
+			}
 		}
 	});
 }
