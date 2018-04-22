@@ -203,6 +203,48 @@ function changeEmail(u, p, e, n, response) {
 function forgotPassword(u, e, response) {
 }
 
+//parses ingredients to use for price scraping
+function parseIngredient(i) {
+	/*
+	 * Notes for parsing:
+	 * If there is a comma or parenthesis, ignore what is after it
+	 * Ignore everything before and includeing first word that is not 0-9 or '.' or '/'
+	 * trim at end to remove whitespace
+	 * If there is an "or", remove word before, after, and including
+	 * Ignore up to and including words:
+	 *		-chopped
+	 *		-shredded
+	 *		-sliced
+	 *		-diced
+	 *		-of
+	 *		-ripe
+	 *		-fresh
+	 *		-cloves
+	 *		-head
+	 *		-ground
+	 *		-pinch
+	 *		-large
+	 *		-small
+	 *		-medium
+	 *		-whole
+	 */
+
+    var txt = i.replace(/(([0-9]|[ ]|[/]|[.])+)/,""); //remove nuumbers, space, /, and .
+    txt = txt.trim();	//trim whitespce
+    txt = txt.substr(txt.indexOf(" ") + 1);	//remove next word after (units of measurement)
+	
+	//remove before and after "or"
+    txt = txt.replace(/[^ ]+ or [^ ]+/, "");
+
+    //remove words and everything before them
+    txt = txt.replace(/[^]*(chopped|shredded|sliced|diced|of|ripe|fresh|cloves|head|ground|pinch|large|small|medium|whole)+/, "");
+
+    //remove everything after and including comma or parenthesis
+    txt = txt.replace(/([,]|[(])[^]*/, "");
+
+    return txt.trim();
+}
+
 var apiImg;
 var label;
 function searchRecipe(queryURL) {
