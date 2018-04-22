@@ -32,7 +32,7 @@ const html = "/src/html/";
 //Recipe API vars
 const appID = "ed3ccab7";
 const appKey = "55fc72bbb6b5716033f6cc1d04f92ffe";
-var baseURL = "https://api.edamam.com/search?app_id=ed3ccab7&app_key=55fc72bbb6b5716033f6cc1d04f92ffe&q=";
+var baseURL = "https://api.edamam.com/search?app_id=" + appID + "&app_key=" + appKey + "&q=";
 var apiFrom = 0;
 var apiTo = 9;
 
