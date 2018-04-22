@@ -39,6 +39,7 @@ var apiTo = 9;
 // URLs used for web scraping
 const meijer = "https://www.meijer.com/catalog/search_command.cmd?keyword=";
 const meijer_location = "https://www.meijer.com/atstores/main.jsp?icmpid=HeaderYourStores";
+const sams = "https://www.samsclub.com/sams/search/searchResults.jsp?searchCategoryId=all&searchTerm=";
 
 // Dynamic scraping allows for parsing based on location
 const dynamic_scrape = false;
@@ -77,11 +78,10 @@ users.set({
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname + html + "login.html"));
 });
+
 app.get('/homeGuest', function(request, response) {
 	response.sendFile(path.join(__dirname + html + "home-guest.html"));
-  });
-  
-
+});
 
 // Called when a POST request is made to /registerAccount
 app.post('/register', function(request, response) {
@@ -101,7 +101,7 @@ app.post('/register', function(request, response) {
 // Called when a POST request is made to /login
 app.post('/login', function(request, response) {
 	if (!request.body) return response.sendStatus(400);
-	if (Object.keys(request.body).length != 3 || !request.body.email || !request.body.password) {
+	if (Object.keys(request.body).length != 2 || !request.body.email || !request.body.password) {
 		return response.status(400).send("Invalid POST request\n");
 	}
 	console.log("Login request received.");
@@ -166,14 +166,25 @@ function createAccount(request, response) {
 
 // Helper function that verifies user has an account and logs them in
 function login(request, response) {
-	var exists = checkIfUserExists(request);
-	console.log(exists);
-	if (exists != null) {
-		//response.sendFile();
-		console.log("check password");
-	} else {
-		return response.status(400).send("Account does not exist.")
-	}
+	accounts.once("value", snapshot => {
+		const users = snapshot.val();
+		var counter = 0;
+		snapshot.forEach(function(childSnapshot){
+			var key = childSnapshot.val().email;
+			if (key === request.body.email) {
+				if (request.body.password === childSnapshot.val().password) {
+					return response.sendFile(path.join(__dirname + html + "home-user.html"));
+				}
+				return response.status(400).send("Wrong email/password.")
+				//return response.sendFile(path.join(__dirname + html + "login.html"));
+			}
+			if (counter === snapshot.numChildren() - 1) {
+				return response.status(400).send("Account does not exist.");
+				//return response.sendFile(path.join(__dirname + html + "login.html"));
+			}
+			counter++;
+		});
+	});
 }
 
 // Helper function that deletes an account
@@ -191,35 +202,6 @@ function changeEmail(u, p, e, n, response) {
 // Helper function for forgotten password
 function forgotPassword(u, e, response) {
 }
-
-// Function to check if user already exists
-function checkIfUserExists(request) {
-	accounts.once("value", snapshot => {
-		const users = snapshot.val();
-		var counter = 0;
-		snapshot.forEach(function(childSnapshot){
-			var key = childSnapshot.val().email;
-			console.log(key);
-			console.log(request.body.email);
-			if (key === request.body.email) {
-				console.log("Password " + childSnapshot.val().password);
-				return childSnapshot.val().password;
-			}
-			if (counter === snapshot.numChildren() - 1) {
-				return null;
-			}
-			counter++;
-		});
-	});
-
-	accounts.orderByChild("email").equalTo(email).once('value', function(snapshot){
-		if (snapshot.val() !== null) {
-			return true;
-		}
-		return false;
-	});
-}
-
 
 var apiImg;
 var label;
@@ -443,8 +425,8 @@ app.listen(port, (err) => {
     return console.log('Listen error!', err);
   }
   console.log(`Server listening on port ${port}`);
-  scrape("celery", '128.210.106.57');
-	scrape_sams("celery", '128.210.106.57');
+  //scrape("celery", '128.210.106.57');
+	//scrape_sams("celery", '128.210.106.57');
 	//var ip = '64.119.240.0';
 	//var ip = '128.210.106.57';
 	//get_location(ip);
