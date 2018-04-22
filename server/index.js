@@ -4,7 +4,7 @@ var admin = require('firebase-admin');
 var path = require('path');
 var serviceAccount = require('./keys/chowtime-cs252-firebase-adminsdk-ug28y-6799120ca9.json');
 var axios = require('axios');		// promise based HTTP client
-//var cheerio = require('cheerio');	// jQuery for the server; get content from axios results
+var cheerio = require('cheerio');	// jQuery for the server; get content from axios results
 var fs = require('fs');			// write fetched content into json file
 
 var app = express();
@@ -39,11 +39,12 @@ var apiTo = 9;
 // URLs used for web scraping
 const meijer = "https://www.meijer.com/catalog/search_command.cmd?keyword=";
 const meijer_location = "https://www.meijer.com/atstores/main.jsp?icmpid=HeaderYourStores";
+const sams = "https://www.samsclub.com/sams/search/searchResults.jsp?searchCategoryId=all&searchTerm=";
 
 // Dynamic scraping allows for parsing based on location
 const dynamic_scrape = false;
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 6211;
 
 // Serve 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -78,6 +79,9 @@ app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname + html + "login.html"));
 });
 
+app.get('/homeGuest', function(request, response) {
+	response.sendFile(path.join(__dirname + html + "home-guest.html"));
+});
 
 // Called when a POST request is made to /registerAccount
 app.post('/register', function(request, response) {
@@ -97,7 +101,7 @@ app.post('/register', function(request, response) {
 // Called when a POST request is made to /login
 app.post('/login', function(request, response) {
 	if (!request.body) return response.sendStatus(400);
-	if (Object.keys(request.body).length != 3 || !request.body.email || !request.body.password) {
+	if (Object.keys(request.body).length != 2 || !request.body.email || !request.body.password) {
 		return response.status(400).send("Invalid POST request\n");
 	}
 	console.log("Login request received.");
@@ -162,14 +166,25 @@ function createAccount(request, response) {
 
 // Helper function that verifies user has an account and logs them in
 function login(request, response) {
-	var exists = checkIfUserExists(request);
-	console.log(exists);
-	if (exists != null) {
-		//response.sendFile();
-		console.log("check password");
-	} else {
-		return response.status(400).send("Account does not exist.")
-	}
+	accounts.once("value", snapshot => {
+		const users = snapshot.val();
+		var counter = 0;
+		snapshot.forEach(function(childSnapshot){
+			var key = childSnapshot.val().email;
+			if (key === request.body.email) {
+				if (request.body.password === childSnapshot.val().password) {
+					return response.sendFile(path.join(__dirname + html + "home-user.html"));
+				}
+				return response.status(400).send("Wrong email/password.")
+				//return response.sendFile(path.join(__dirname + html + "login.html"));
+			}
+			if (counter === snapshot.numChildren() - 1) {
+				return response.status(400).send("Account does not exist.");
+				//return response.sendFile(path.join(__dirname + html + "login.html"));
+			}
+			counter++;
+		});
+	});
 }
 
 // Helper function that deletes an account
@@ -187,35 +202,6 @@ function changeEmail(u, p, e, n, response) {
 // Helper function for forgotten password
 function forgotPassword(u, e, response) {
 }
-
-// Function to check if user already exists
-function checkIfUserExists(request) {
-	accounts.once("value", snapshot => {
-		const users = snapshot.val();
-		var counter = 0;
-		snapshot.forEach(function(childSnapshot){
-			var key = childSnapshot.val().email;
-			console.log(key);
-			console.log(request.body.email);
-			if (key === request.body.email) {
-				console.log("Password " + childSnapshot.val().password);
-				return childSnapshot.val().password;
-			}
-			if (counter === snapshot.numChildren() - 1) {
-				return null;
-			}
-			counter++;
-		});
-	});
-
-	accounts.orderByChild("email").equalTo(email).once('value', function(snapshot){
-		if (snapshot.val() !== null) {
-			return true;
-		}
-		return false;
-	});
-}
-
 
 var apiImg;
 var label;
@@ -311,7 +297,7 @@ function searchRecipe(queryURL) {
 function scrape(food, ip) {
 	food = food.replace(/ /g, "+");		// replacing words with spaces with + (ex. ice cream -> ice+cream)
 	var full_url = meijer + food;
-	var file_name = "./data/" + food + ".json";
+	var file_name = "./data/" + food + '-meijer' + ".json";
 	axios({
 		method: 'get',
 		url: full_url,
@@ -344,28 +330,68 @@ function scrape(food, ip) {
 		}, (error) => console.log(error) );
 }
 
+function scrape_sams(food, ip) {
+	var full_url = sams + food;
+	food = food.replace(/ /g, "+");		// replacing words with spaces with + (ex. ice cream -> ice+cream)
+	var file_name = "./data/" + food + "-sams" + ".json";
+	axios({
+		method: 'get',
+		url: full_url,
+		headers: {'X-Forwarded-For': ip}
+	})
+		.then((response) => {
+			if (response.status === 200) {
+				var $;
+					const html = response.data;
+					$ = cheerio.load(html);
+					parse_sams($, file_name);
+			}
+		}, (error) => console.log(error) );
+}
+
 function parse($, file_name) {
-				var product_cost;
-				var product_name;
-				var list = [];
+	var product_cost;
+	var product_name;
+	var product_image;
+	var list = [];
 
-				var item = $('.product-info').each(function(i, elem){
-					if ($(this).find('.product-price').find('.prod-price-sort').length) {
-						product_cost = $(this).find('.product-price').find('.prod-price-sort').text();
-					} else if ($(this).find('.product-price').find('.prodDtlRegPrice').length) {
-						product_cost = $(this).find('.product-price').find('.prodDtlRegPrice').text();
-					} else if ($(this).find('.product-price').length) {
-						product_cost = $(this).find('.product-price').text();
-					}
-					product_cost = product_cost.replace(/\s/g,'');
-					product_name = $(this).find('.mjr-product-name').find('a').text();
-					list[i] = {
-						name: product_name,
-						cost: product_cost
-					}
-				});
-				fs.writeFile(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
+	var item = $('.add-product').each(function(i, elem){
+		if ($(this).find('.product-price').find('.prod-price-sort').length) {
+			product_cost = $(this).find('.product-price').find('.prod-price-sort').text();
+		} else if ($(this).find('.product-price').find('.prodDtlRegPrice').length) {
+			product_cost = $(this).find('.product-price').find('.prodDtlRegPrice').text();
+		} else if ($(this).find('.product-price').length) {
+			product_cost = $(this).find('.product-price').text();
+		}
+		product_cost = product_cost.replace(/\s/g,'');
+		product_name = $(this).find('.mjr-product-name').find('a').text();
+		product_image = $(this).find('.prod-img').attr('src');
+		list[i] = {
+			name: product_name,
+			cost: product_cost,
+			image: product_image
+			}
+		});
+		fs.writeFile(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
+}
 
+function parse_sams($, file_name) {
+	var product_cost;
+	var product_name;
+	var product_image;
+	var list = [];
+
+	var item = $('.products-card').each(function(i, elem){
+		product_cost = $(this).find('.sc-dollars-v2').text() + "." + $(this).find('.sc-cents-v2').text();
+		product_name = $(this).find('.img-text').text();
+		product_image = $(this).find('.cardProdImg').attr('src');
+		list[i] = {
+			name: product_name,
+			cost: product_cost,
+			image: product_image
+		}
+	});
+	fs.writeFile(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
 }
 
 // Obtains the address of the store that meijers believes you are closest to via ip address
@@ -399,7 +425,8 @@ app.listen(port, (err) => {
     return console.log('Listen error!', err);
   }
   console.log(`Server listening on port ${port}`);
-  //scrape("celery");
+  //scrape("celery", '128.210.106.57');
+	//scrape_sams("celery", '128.210.106.57');
 	//var ip = '64.119.240.0';
 	//var ip = '128.210.106.57';
 	//get_location(ip);

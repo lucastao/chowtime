@@ -20,7 +20,8 @@
 				<h3>Login to Your ChowTime Account</h3>
 			</div>
 			<!-- login form -->
-			<form method="POST" action="/login" class="login-form">
+			<form action="javascript:login()" class="login-form">
+			<!--<form method="POST" action="/login" class="login-form">-->
 				<div class="input-container">
 					<i class="fa fa-envelope"></i>
 					<input type="email" class="input" name="email" placeholder="Email" required/>
@@ -66,7 +67,7 @@
 					<span id="sepTextId" class="separator-text hide">OR</span>
 			</div>
 			<div class="guest-login">
-				<a href="#guest" class="guest">
+				<a href="/homeGuest" method="GET" class="guest">
 					<span>Proceed as Guest</span>
 				<a>
 			</div>
