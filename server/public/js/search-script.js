@@ -40,7 +40,7 @@ $("#submit2").on("click", function (e) {
 
 	// Clear previous search
 	$("#recipe-content").empty();
-	$("#user-input").val("");
+	$("#user-input2").val("");
 });
 
 $("#submit3").on("click", function (e) {
@@ -57,8 +57,8 @@ $("#submit3").on("click", function (e) {
 	searchRecipe(searchURL);
 
 	// Clear previous search
-	$("#recipe-content").empty();
-	$("#user-input").val("");
+	$("#recipe-content2").empty();
+	$("#user-input3").val("");
 });
 
 $("#submit4").on("click", function (e) {
@@ -75,8 +75,8 @@ $("#submit4").on("click", function (e) {
 	searchRecipe(searchURL);
 
 	// Clear previous search
-	$("#recipe-content").empty();
-	$("#user-input").val("");
+	$("#recipe-content2").empty();
+	$("#user-input4").val("");
 });
 
 function searchRecipe(queryURL) {
@@ -170,6 +170,7 @@ function searchRecipe(queryURL) {
 			cardContent.after(cardAction);
 			
 			$("#recipe-content").append(card);
+			$("#recipe-content2").append(card);
 			
 			favoriteButton.on("click", function(e)) {
 				var n = $(e.target).data("name");
