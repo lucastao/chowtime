@@ -53,6 +53,7 @@ admin.initializeApp({
 
 var db = admin.database();
 var accounts = db.ref('users');
+var recipes = db.ref('recipes');
 
 accounts.on('child_added', function(snapshot){
 	var post = snapshot.val();
@@ -104,6 +105,17 @@ app.post('/login', function(request, response) {
 	console.log(request.body);
 
 	login(request, response);
+});
+
+// Called when a POST request is made to /login
+app.post('/submit_recipe', function(request, response) {
+	if (!request.body) return response.sendStatus(400);
+
+	if (Object.keys(request.body).length != 4 || !request.body.name || !request.body.description || !request.body.ingredients || !request.body.procedure) {
+		return response.status(400).send("Please fill out all fields\n");
+	}
+	console.log("Submit recipe request");
+	submit_recipe(request, response);
 });
 
 // Called when a POST request is made to /deleteAccount
@@ -177,6 +189,36 @@ function login(request, response) {
 			if (counter === snapshot.numChildren() - 1) {
 				return response.status(400).send("Account does not exist.");
 				//return response.sendFile(path.join(__dirname + html + "login.html"));
+			}
+			counter++;
+		});
+	});
+}
+
+function submit_recipe(request, response) {
+	recipes.once("value", snapshot => {
+		var counter = 0;
+		snapshot.forEach(function(child) {
+			var recipe = child.key;
+			if (request.body.name === recipe) {
+				response.status(400).send("Recipe name already exists.");
+				return false;
+			}
+			console.log(recipe);
+			console.log(counter);
+			console.log(snapshot.numChildren()-1);
+			if (counter === snapshot.numChildren() - 1) {
+				recipes.child(request.body.name).set({
+					description: request.body.description,
+					ingredients: request.body.ingredients,
+					procedure: request.body.procedure
+				}, function(error){
+					if (error) {
+						console.log("Error in storing recipe");
+					} else {
+						return response.status(200).send("Recipe stored.");
+					}
+				});
 			}
 			counter++;
 		});
