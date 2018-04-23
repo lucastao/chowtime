@@ -179,6 +179,12 @@ function searchRecipe(queryURL) {
 			
 			$("#recipe-content").append(c);
 			$("#recipe-content2").append(c);
+
+			var viewIngredients = $("<button>");
+			viewIngredients.addClass("btn btn-success").text("Find Ingredients");
+			viewIngredients.attr("data-name", [i]);
+			viewIngredients.css("width", "20%");
+			c.append(viewIngredients);	
 			
 			favoriteButton.on("click", function(e) {
 				var n = $(e.target).data("name");
@@ -188,6 +194,27 @@ function searchRecipe(queryURL) {
 					image: data.hits[n].recipe.image
 				};
 				//add newFavorite to database 
+			});
+
+			viewIngredients.on("click", function(e) {
+				var n = $(e.target).data("name");
+				$.ajax({
+					url: "/findIngredients",
+					method: "POST",
+					data: {
+						"name": data.hits[n].recipe.label,
+						"ingredients": data.hits[n].recipe.ingredientLines,
+						"image": data.hits[n].recipe.image
+					},
+					success: function(data){
+						alert("YES!");
+						alert(data);
+						//TODO:
+					},
+					error: function(error){
+						alert(error.responseText);
+					}
+				});
 			});
 		};
 	});

@@ -42,15 +42,9 @@ function login(form) {
 			"password": document.getElementsByName("password")[0].value
 		},
 		success: function(data) {
-			//alert(window.location.pathname);
-			//window.location.replace("http://localhost:6211/server/src/html/home-user.html");
-			//var myWindow = window.open("","_self");
 			document.open('text/html');
 			document.write(data);
 			document.close();
-			//myWindow.document.write(data);
-			//$("html").html(data);
-			//window.location.href = data;
 		},
 		error: function(error) {
 			alert(error.responseText);
