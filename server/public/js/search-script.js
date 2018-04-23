@@ -207,9 +207,18 @@ function searchRecipe(queryURL) {
 						"image": data.hits[n].recipe.image
 					},
 					success: function(data){
-						alert("YES!");
-						alert(data);
-						//TODO:
+						var object = JSON.parse(data);
+						alert(object);
+						alert(Object.keys(object).length);
+						for (var j = 0; j < Object.keys(object).length; j++) {
+							var ob = object[Object.keys(object)[j]];
+							for (index in ob[0]) {
+								
+								alert(ob[0][index].image);
+								alert(ob[0][index].name);
+								alert(ob[0][index].cost);
+							}
+						}
 					},
 					error: function(error){
 						alert(error.responseText);

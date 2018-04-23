@@ -240,12 +240,86 @@ function save_recipe(request, response) {
 }
 
 function find_ingredients(request, response) {
-	var test_ip = '128.210.106.57';
+	//var test_ip = '128.210.106.57';
+	test_ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
 	console.log(request.body.ingredients);
 	console.log(request.body.name);
 	console.log(request.body.image);
 	var object = {};
+	var scraped = false;
+	var promises = [];
 
+	function go(i){
+		var n = parseIngredient(request.body.ingredients[i]);
+		var check_n = n.replace(/ /g, "+");
+		var url_meijer = "./data/" + check_n + "-meijer.json";
+		var url_sams = "./data/" + check_n + "-sams.json";
+		console.log(url_meijer);
+		console.log(url_sams);
+		if (fs.existsSync(url_meijer) && fs.existsSync(url_sams)) {
+			var data = fs.readFileSync(url_meijer);	
+			var data2 = fs.readFileSync(url_sams);
+			var obj = JSON.parse(data);
+			var obj2 = JSON.parse(data2);
+			object[check_n + "-meijer"] = [];
+			object[check_n + "-meijer"].push(obj);
+			object[check_n + "-sams"] = [];
+			object[check_n + "-sams"].push(obj2);
+			console.log("No scrape");
+			if (i === request.body.ingredients.length - 1) {
+				//console.log(object);
+				console.log(Object.keys(object).length);
+				for (var l = 0; l < Object.keys(object).length; l++) {
+					console.log(Object.keys(object)[l])
+					var ob = object[Object.keys(object)[l]];
+					for (index in ob[0]) {
+						console.log(ob[0][index].image);
+						console.log(ob[0][index].name);
+						console.log(ob[0][index].cost);
+					}
+				}
+				//console.log(test);
+				return response.status(200).send(JSON.stringify(object));
+			} else {
+				go(i+1);
+			}
+		} else {
+			scraped = true;
+			scrape(n, test_ip, function(){
+				scrape_sams(n, test_ip, function(){
+					var data = fs.readFileSync(url_meijer);	
+					var data2 = fs.readFileSync(url_sams);
+					var obj = JSON.parse(data);
+					var obj2 = JSON.parse(data2);
+					object[check_n + "-meijer"] = [];
+					object[check_n + "-meijer"].push(obj);
+					object[check_n + "-sams"] = [];
+					object[check_n + "-sams"].push(obj2);
+					console.log("Scrape");
+					if (i === request.body.ingredients.length - 1) {
+						console.log(Object.keys(object).length);
+							for (var j = 0; j < Object.keys(object).length; j++) {
+								console.log(Object.keys(object)[j])
+								var ob = object[Object.keys(object)[j]];
+								for (index in ob[0]) {
+									console.log(ob[0][index].image);
+									console.log(ob[0][index].name);
+									console.log(ob[0][index].cost);
+								}
+							}
+						return response.status(200).send(JSON.stringify(object));
+					} else {
+						go(i+1);
+					}
+
+				});
+			});
+		}
+	}
+	go(0);
+	
+
+/*
 	for (var i = 0; i < request.body.ingredients.length; i++) {
 		var n = parseIngredient(request.body.ingredients[i]);
 		var check_n = n.replace(/ /g, "+");
@@ -264,19 +338,79 @@ function find_ingredients(request, response) {
 			object[check_n + "-sams"].push(obj2);
 			console.log(object);
 		} else {
-			scrape(n, test_ip, function(value){
-				console.log(value)
+			scraped = true;
+			//var promises = [];
+
+			scrape(n, test_ip, function(){
+				scrape_sams(n, test_ip, function(){
+					var data = fs.readFileSync(url_meijer);	
+					var data2 = fs.readFileSync(url_sams);
+					var obj = JSON.parse(data);
+					var obj2 = JSON.parse(data2);
+					object[check_n + "-meijer"] = [];
+					object[check_n + "-meijer"].push(obj);
+					object[check_n + "-sams"] = [];
+					object[check_n + "-sams"].push(obj2);
+					if (i == request.body.ingredients.length - 1) {
+						return response.status(200).send(object);
+					}
+					console.log("Gets here 2");
+				});
 			});
-			scrape_sams(n, test_ip, function(value){
-				console.log(value);
+
+			var promises = [
+				new Promise(resolve => scrape(n, test_ip)),
+				new Promise(resolve => scrape_sams(n, test_ip))
+			];
+
+		var promise = new Promise(resolve => scrape(n, test_ip));
+		var promise2 = new Promise(resolve => scrape_sams(n, test_ip));
+		promises.push(promise);
+		promises.push(promise2);
+		
+			var promise = new Promise(function (resolve, reject){
+				scrape(n, test_ip, function(){
+					resolve(true);
+				});
 			});
+			promises.push(promise);
+			var promise2 = new Promise(function (resolve, reject){
+				scrape_sams(n, test_ip, function(){
+					resolve(true);
+				});
+			});
+			promises.push(promise2);
+
+			Promise.all(promises).then(data => {
+					console.log("HERE");
+					var data = fs.readFileSync(url_meijer);	
+					var data2 = fs.readFileSync(url_sams);
+					var obj = JSON.parse(data);
+					var obj2 = JSON.parse(data2);
+					object[check_n + "-meijer"] = [];
+					object[check_n + "-meijer"].push(obj);
+					object[check_n + "-sams"] = [];
+					object[check_n + "-sams"].push(obj2);
+					if (i == request.body.ingredients.length - 1) {
+						return response.status(200).send(object);
+					}
+					console.log("Gets here 2");
+				
+			});
+
 		}
 
-		if (i == request.body.ingredients.length - 1) {
+		if (scraped === false && i == request.body.ingredients.length - 1) {
 			console.log("Gets here");
 			return response.status(200).send(object);
+		} else if (scraped === true && i == request.body.ingredients.length - 1) {
+			console.log("Here");
+			Promise.all(promises).then(data => {
+				console.log("Good");
+			});
+
 		}
-	}
+	}*/
 }
 
 // Helper function that deletes an account
@@ -339,7 +473,7 @@ function parseIngredient(i) {
 
 // Scrape meijer for food information
 // Their website might use javascript to edit core html after screen has loaded, so prices may vary slightly
-function scrape(food, ip) {
+function scrape(food, ip, callback) {
 	food = food.replace(/ /g, "+");		// replacing words with spaces with + (ex. ice cream -> ice+cream)
 	var full_url = meijer + food;
 	var file_name = "./data/" + food + '-meijer' + ".json";
@@ -369,13 +503,14 @@ function scrape(food, ip) {
 				} else {
 					const html = response.data;
 					$ = cheerio.load(html);
-					return parse($, file_name);
+					parse($, file_name);
+					callback();
 				}
 			}
 		}, (error) => console.log(error) );
 }
 
-function scrape_sams(food, ip) {
+function scrape_sams(food, ip, callback) {
 	var full_url = sams + food;
 	food = food.replace(/ /g, "+");		// replacing words with spaces with + (ex. ice cream -> ice+cream)
 	var file_name = "./data/" + food + "-sams" + ".json";
@@ -389,7 +524,8 @@ function scrape_sams(food, ip) {
 				var $;
 					const html = response.data;
 					$ = cheerio.load(html);
-					return parse_sams($, file_name);
+					parse_sams($, file_name);
+					callback();
 			}
 		}, (error) => console.log(error) );
 }
@@ -430,8 +566,12 @@ function parse_sams($, file_name) {
 
 	var item = $('.products-card').each(function(i, elem){
 		product_cost = $(this).find('.sc-dollars-v2').text() + "." + $(this).find('.sc-cents-v2').text();
+		//	product_cost = $(this).find('.Price-currency').text() + $(this).find('.Price-characteristic').text() + $(this).find('.Price-mark').text() + $(this).find('.Price-mantissa').text();
 		product_name = $(this).find('.img-text').text();
 		product_image = $(this).find('.cardProdImg').attr('src');
+		if (product_image === undefined) {
+			product_image = $(this).find('sc-product-card-image').attr('src');
+		}
 		list[i] = {
 			name: product_name,
 			cost: product_cost,
