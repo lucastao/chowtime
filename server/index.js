@@ -198,30 +198,34 @@ function login(request, response) {
 function submit_recipe(request, response) {
 	recipes.once("value", snapshot => {
 		var counter = 0;
+		if (!snapshot.hasChildren()) {
+			save_recipe(request, response);
+			return;
+		}
 		snapshot.forEach(function(child) {
 			var recipe = child.key;
 			if (request.body.name === recipe) {
-				response.status(400).send("Recipe name already exists.");
-				return false;
+				return response.status(400).send("Recipe name already exists.");
 			}
-			console.log(recipe);
-			console.log(counter);
-			console.log(snapshot.numChildren()-1);
 			if (counter === snapshot.numChildren() - 1) {
-				recipes.child(request.body.name).set({
-					description: request.body.description,
-					ingredients: request.body.ingredients,
-					procedure: request.body.procedure
-				}, function(error){
-					if (error) {
-						console.log("Error in storing recipe");
-					} else {
-						return response.status(200).send("Recipe stored.");
-					}
-				});
+				save_recipe(request, response);
 			}
 			counter++;
 		});
+	});
+}
+
+function save_recipe(request, response) {
+	recipes.child(request.body.name).set({
+		description: request.body.description,
+		ingredients: request.body.ingredients,
+		procedure: request.body.procedure
+	}, function(error){
+		if (error) {
+			console.log("Error in storing recipe");
+		} else {
+			return response.status(200).send("Recipe stored.");
+		}
 	});
 }
 
