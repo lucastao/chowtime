@@ -99,7 +99,7 @@ app.post('/register', function(request, response) {
 app.post('/login', function(request, response) {
 	if (!request.body) return response.sendStatus(400);
 	if (Object.keys(request.body).length != 2 || !request.body.email || !request.body.password) {
-		return response.status(400).send("Invalid POST request\n");
+		return response.status(400).send("Invalid POST request");
 	}
 	console.log("Login request received.");
 	console.log(request.body);
@@ -112,10 +112,20 @@ app.post('/submit_recipe', function(request, response) {
 	if (!request.body) return response.sendStatus(400);
 
 	if (Object.keys(request.body).length != 4 || !request.body.name || !request.body.description || !request.body.ingredients || !request.body.procedure) {
-		return response.status(400).send("Please fill out all fields\n");
+		return response.status(400).send("Please fill out all fields");
 	}
 	console.log("Submit recipe request");
 	submit_recipe(request, response);
+});
+
+app.post('/findIngredients', function(request, response){
+	if (!request.body) return response.sendStatus(400);
+
+	if (Object.keys(request.body).length != 3 || !request.body.name || !request.body.ingredients || !request.body.image) {
+		return response.status(400).send("Invalid request");
+	}
+	console.log("Find ingredients request");
+	find_ingredients(request, response);
 });
 
 // Called when a POST request is made to /deleteAccount
@@ -229,6 +239,46 @@ function save_recipe(request, response) {
 	});
 }
 
+function find_ingredients(request, response) {
+	var test_ip = '128.210.106.57';
+	console.log(request.body.ingredients);
+	console.log(request.body.name);
+	console.log(request.body.image);
+	var object = {};
+
+	for (var i = 0; i < request.body.ingredients.length; i++) {
+		var n = parseIngredient(request.body.ingredients[i]);
+		var check_n = n.replace(/ /g, "+");
+		var url_meijer = "./data/" + check_n + "-meijer.json";
+		var url_sams = "./data/" + check_n + "-sams.json";
+		console.log(url_meijer);
+		console.log(url_sams);
+		if (fs.existsSync(url_meijer) && fs.existsSync(url_sams)) {
+			var data = fs.readFileSync(url_meijer);	
+			var data2 = fs.readFileSync(url_sams);
+			var obj = JSON.parse(data);
+			var obj2 = JSON.parse(data2);
+			object[check_n + "-meijer"] = [];
+			object[check_n + "-meijer"].push(obj);
+			object[check_n + "-sams"] = [];
+			object[check_n + "-sams"].push(obj2);
+			console.log(object);
+		} else {
+			scrape(n, test_ip, function(value){
+				console.log(value)
+			});
+			scrape_sams(n, test_ip, function(value){
+				console.log(value);
+			});
+		}
+
+		if (i == request.body.ingredients.length - 1) {
+			console.log("Gets here");
+			return response.status(200).send(object);
+		}
+	}
+}
+
 // Helper function that deletes an account
 function deleteAccount(u, p, e, response) {
 }
@@ -319,7 +369,7 @@ function scrape(food, ip) {
 				} else {
 					const html = response.data;
 					$ = cheerio.load(html);
-					parse($, file_name);
+					return parse($, file_name);
 				}
 			}
 		}, (error) => console.log(error) );
@@ -339,7 +389,7 @@ function scrape_sams(food, ip) {
 				var $;
 					const html = response.data;
 					$ = cheerio.load(html);
-					parse_sams($, file_name);
+					return parse_sams($, file_name);
 			}
 		}, (error) => console.log(error) );
 }
@@ -367,7 +417,9 @@ function parse($, file_name) {
 			image: product_image
 			}
 		});
-		fs.writeFile(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
+		//fs.writeFile(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
+		fs.writeFileSync(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
+		return list;
 }
 
 function parse_sams($, file_name) {
@@ -386,7 +438,9 @@ function parse_sams($, file_name) {
 			image: product_image
 		}
 	});
-	fs.writeFile(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
+	//fs.writeFile(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
+	fs.writeFileSync(file_name, JSON.stringify(list), (err) => console.log("Successfully wrote to file."));
+	return list;
 }
 
 // Obtains the address of the store that meijers believes you are closest to via ip address
