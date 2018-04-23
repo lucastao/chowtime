@@ -51,10 +51,10 @@
         <div class="navbar w-100 order-2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <form class="form-inline">
+                    <div class="form-inline">
                         <input class="form-control mr-sm-2" id="user-input3" type="text" placeholder="Search recipe...">
-                        <button class="btn btn-success" id="submit3" type="button">Search recipe</button>
-                    </form>
+                        <button class="btn btn-success" id="submit3" type="submit">Search recipe!</button>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -72,9 +72,10 @@
             <div class="card-body">
                 <h4 class="card-title">Search for a recipe:</h4>
                 <input type="text" class="form-control" id="user-input4" placeholder="Search for recipe...">
-                <span class="input-group-btn">
-                    <button class="btn btn-secondary" id="submit4" type="button">Search</button>
-                </span>
+                <div class="input-group-btn">
+                    <button class="btn btn-secondary" id="submit4" type="submit">Search</button>
+                </div>
+                <div id="recipe-content" class="section"></div>
             </div>
         </div>
     </div>
@@ -117,8 +118,10 @@
                     <h4 class="card-title">Team</h4>
                     <p class="card-text">Our team consists of Shaural Patel, Lucas Tao and Alex Cvelbar</p>
                     <p class="card-text">Contact US (under construction...)</p>
+                    <button class="btn waves-effect waves-light" type="button" name="action" id="but">Pressme</button>
                 </div>
             </div>
     </div>
+    <script src="./js/search-script.js"></script>
 </body>
 </html>
