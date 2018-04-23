@@ -75,6 +75,9 @@ app.get('/', function(request, response) {
 app.get('/homeGuest', function(request, response) {
 	response.sendFile(path.join(__dirname + html + "home-guest.html"));
 });
+app.get('/account', function(request, response) {
+	response.sendFile(path.join(__dirname + html + "account.html"));
+});
 
 // Called when a POST request is made to /registerAccount
 app.post('/register', function(request, response) {
