@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ChowTime</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="./img/logo.png"/>
+  <link rel="stylesheet" href="./css/home-guest-styles.css"/>
+  <link rel="stylesheet" href="./css/home-user-styles.css"/>
+  <!-- bootstrap dependancies -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50" onload="load()">
+	<div class="background" id="background"></div>
+	<div class="backdrop"></div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">Logo</a>
+      
+        <!-- Links -->
+        <ul class="navbar-nav order-1">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+                <a class="nav-link" href="#search">Search Recipe</a>
+              </li>
+            <li class="nav-item">
+                  <a class="nav-link" href="#search">Create Recipe</a>
+                </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About Us</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a id="ddmember" class="nav-link dropdown-toggle text-primary" data-toggle="dropdown" href="#">Members</a>
+            <div class="dropdown-menu bg-dark">
+              <a class="dropdown-item text-white" href="#">My Account</a>
+              <a class="dropdown-item text-white" href="#">Favorite Recipes</a>
+              <a class="dropdown-item text-white" href="#">My Recipes</a>
+              <a class="dropdown-item text-white" href="#create">Create Recipe</a>
+            </div>
+          </li>
+        </ul>
+        </div>
+        <!-- search form -->
+        <div class="navbar w-100 order-2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <form class="form-inline" action="/action_page.php">
+                        <input class="form-control mr-sm-2" id="user-input3" type="text" placeholder="Search recipe...">
+                        <button class="btn btn-success" id="submit3" type="submit">Search recipe</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="card mx-auto" style="width: 400px; margin-top: 50px">
+      <div class="card-body">
+        <h4 class="card-title">My Account</h4>
+        <p>Email address: <span id="my-email" class="text-primary">Placeholder</span></p> 
+        
+        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="change-password" type="submit">Change Password</button>
+        <!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Change Password</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form action="/changepwd">
+              <div class="form-group">
+                <label for="old-pwd">Old Password:</label>
+                <input type="password" class="form-control" id="old-pwd" required>
+              </div>
+              <div class="form-group">
+                <label for="new-pwd">New Password:</label>
+                <input type="password" class="form-control" id="new-pwd" required>
+              </div>
+              <div class="form-group">
+                <label for="conf-new-pwd">Confirm New Password:</label>
+                <input type="password" class="form-control" id="conf-new-pwd" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Change Password</button>
+            </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+        <br/><br/><hr/>
+        <button class="btn btn-danger" id="delete-account" type="submit">DELETE ACCOUNT</button>
+      </div>
+    </div>
+</body>
+</html>
