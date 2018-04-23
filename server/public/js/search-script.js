@@ -6,9 +6,9 @@ var apiFrom = 0;
 var apiTo = 9;
 var apiImg;
 var label;
-
+//    <div class="recipe-c" id=id="recipe-content"></div>
 $("#submit").on("click", function (e) {
-
+	console.log("hello");
 	// Prevent form from submitting
 	e.preventDefault();
 
@@ -26,7 +26,7 @@ $("#submit").on("click", function (e) {
 });
 
 $("#submit2").on("click", function (e) {
-
+	console.log("hello");
 	// Prevent form from submitting
 	e.preventDefault();
 
@@ -44,7 +44,7 @@ $("#submit2").on("click", function (e) {
 });
 
 $("#submit3").on("click", function (e) {
-
+	console.log("hello");
 	// Prevent form from submitting
 	e.preventDefault();
 
@@ -62,7 +62,7 @@ $("#submit3").on("click", function (e) {
 });
 
 $("#submit4").on("click", function (e) {
-
+	console.log("hello");
 	// Prevent form from submitting
 	e.preventDefault();
 
@@ -80,6 +80,7 @@ $("#submit4").on("click", function (e) {
 });
 
 function searchRecipe(queryURL) {
+	console.log("searching recipe " + queryURL);
 	fetch(queryURL)
 	.then((resp) => resp.json())
 	.then(function (data) {
@@ -180,7 +181,7 @@ function searchRecipe(queryURL) {
 					image: data.hits[n].recipe.image
 				};
 				//add newFavorite to database 
-			}
-		}
+			});
+		};
 	});
-}
+};
