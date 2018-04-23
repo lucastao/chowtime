@@ -7,13 +7,17 @@ var apiTo = 9;
 var apiImg;
 var label;
 //    <div class="recipe-c" id=id="recipe-content"></div>
-$("#submit").on("click", function (e) {
-	console.log("hello");
+$("#but").on("click", function (e) {
+	alert("hello");
+});
+
+$("#submit1").on("click", function (e) {
+	//alert("hello");
 	// Prevent form from submitting
 	e.preventDefault();
 
 	//Grab the user input from the main word search text box.
-	var userInput = $("#user-input").val().trim().toLowerCase();
+	var userInput = $("#user-input1").val().trim().toLowerCase();
 	userInput = userInput.replace(/ /g, "+");
 
 	// Integrate user input into our ajax request
@@ -22,11 +26,12 @@ $("#submit").on("click", function (e) {
 
 	// Clear previous search
 	$("#recipe-content").empty();
-	$("#user-input").val("");
+	$("#recipe-content2").empty();
+	$("#user-input1").val("");
 });
 
 $("#submit2").on("click", function (e) {
-	console.log("hello");
+	//alert("hello");
 	// Prevent form from submitting
 	e.preventDefault();
 
@@ -40,11 +45,12 @@ $("#submit2").on("click", function (e) {
 
 	// Clear previous search
 	$("#recipe-content").empty();
+	$("#recipe-content2").empty();
 	$("#user-input2").val("");
 });
 
 $("#submit3").on("click", function (e) {
-	console.log("hello");
+	//alert("hello");
 	// Prevent form from submitting
 	e.preventDefault();
 
@@ -57,12 +63,13 @@ $("#submit3").on("click", function (e) {
 	searchRecipe(searchURL);
 
 	// Clear previous search
+	$("#recipe-content").empty();
 	$("#recipe-content2").empty();
 	$("#user-input3").val("");
 });
 
 $("#submit4").on("click", function (e) {
-	console.log("hello");
+	//alert("hello");
 	// Prevent form from submitting
 	e.preventDefault();
 
@@ -75,6 +82,7 @@ $("#submit4").on("click", function (e) {
 	searchRecipe(searchURL);
 
 	// Clear previous search
+	$("#recipe-content").empty();
 	$("#recipe-content2").empty();
 	$("#user-input4").val("");
 });
@@ -84,7 +92,6 @@ function searchRecipe(queryURL) {
 	fetch(queryURL)
 	.then((resp) => resp.json())
 	.then(function (data) {
-		console.log(queryURL);
 		//for each recipe
 		for(var i = apiFrom; i < apiTo; i++) {
 			//create card for this recipe
@@ -115,7 +122,7 @@ function searchRecipe(queryURL) {
 			for (var j = 0; j < data.hits[i].recipe.ingredients.length; j++) {
 				var ingreds = data.hits[i].recipe.ingredients[j].text;
 				var newIng = $("<p>");
-				newIng.text(ingreds)
+				newIng.text(ingreds);
 				pRecipe.append(newIng);
 			};
 			cimg.after(cardContent);
@@ -164,16 +171,16 @@ function searchRecipe(queryURL) {
 
 			//Create button to favorite a recipe
 			var favoriteButton = $("<i>");
-			favoriteButton.addClass("button-action");
+			favoriteButton.addClass("small fa fa-cutlery tooltipped");
 			favoriteButton.attr("data-name", [i]).attr("data-position", "top").attr("data-tooltip", "Click to save recipe for later.");
 			$('.tooltipped').tooltip({ delay: 30 });
 			cardAction.append(link, favoriteButton);
 			cardContent.after(cardAction);
 			
-			$("#recipe-content").append(card);
-			$("#recipe-content2").append(card);
+			$("#recipe-content").append(c);
+			$("#recipe-content2").append(c);
 			
-			favoriteButton.on("click", function(e)) {
+			favoriteButton.on("click", function(e) {
 				var n = $(e.target).data("name");
 				var newFavorite = {
 					name: data.hits[n].recipe.label,
