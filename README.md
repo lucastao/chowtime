@@ -15,7 +15,7 @@ You can search for any recipe you would like to cook, we will then provide you w
 You may also create your own recipes which will be stored into our database.
 
 Technologies:
-- Heroku
+- DigitalOcean
 - Firebase
 - NodeJS (express framework)
 - HTML5
