@@ -11,7 +11,8 @@ Alex Cvelbar | acvelbar@purdue.edu
 Project Name: ChowTime
 
 Project Description:
-You can input a recipe and it will search for all ingredients required. Then you can select the ingredients you prefer and it will tell you the total cost, where you can buy the ingredients and other information such as: cooking procedure, calory count, optional substitutes, total cost, etc...
+You can search for any recipe you would like to cook, we will then provide you with a list of ingredients from which you can select the ones you prefer, from there we will tell you where you can find the ingredients, how much your meal will cost you and the procedure to cook it.
+You may also create your own recipes which will be stored into our database.
 
 Technologies:
 - Heroku
