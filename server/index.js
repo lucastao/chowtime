@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('express-session');
 var body_parser = require('body-parser');
 var admin = require('firebase-admin');
 var path = require('path');
@@ -9,6 +10,12 @@ var fs = require('fs');			// write fetched content into json file
 
 var app = express();
 app.use(body_parser.urlencoded({extended: true}));
+app.use(session({
+	name: 'chowtime-cookie',
+	secret: 'test-secret',
+	resave: false,
+	savedUninitialized: false
+}));
 
 const { exec } = require('child_process');
 
@@ -77,7 +84,12 @@ app.get('/homeGuest', function(request, response) {
 	response.sendFile(path.join(__dirname + html + "home-guest.html"));
 });
 app.get('/account', function(request, response) {
-	response.sendFile(path.join(__dirname + html + "account.html"));
+	console.log(request.session.email);
+	var $doc = cheerio.load(fs.readFileSync(path.join(__dirname + html + "account.html")));
+	console.log($doc('#my-email').text(request.session.email));
+	//console.log($doc.html());
+	//response.sendFile(path.join(__dirname + html + "account.html"));
+	response.send($doc.html());
 });
 
 // Called when a POST request is made to /registerAccount
@@ -191,6 +203,7 @@ function login(request, response) {
 			var key = childSnapshot.val().email;
 			if (key === request.body.email) {
 				if (request.body.password === childSnapshot.val().password) {
+					request.session.email = request.body.email;
 					return response.sendFile(path.join(__dirname + html + "home-user.html"));
 				}
 				return response.status(400).send("Wrong email/password.")
@@ -317,100 +330,6 @@ function find_ingredients(request, response) {
 		}
 	}
 	go(0);
-	
-
-/*
-	for (var i = 0; i < request.body.ingredients.length; i++) {
-		var n = parseIngredient(request.body.ingredients[i]);
-		var check_n = n.replace(/ /g, "+");
-		var url_meijer = "./data/" + check_n + "-meijer.json";
-		var url_sams = "./data/" + check_n + "-sams.json";
-		console.log(url_meijer);
-		console.log(url_sams);
-		if (fs.existsSync(url_meijer) && fs.existsSync(url_sams)) {
-			var data = fs.readFileSync(url_meijer);	
-			var data2 = fs.readFileSync(url_sams);
-			var obj = JSON.parse(data);
-			var obj2 = JSON.parse(data2);
-			object[check_n + "-meijer"] = [];
-			object[check_n + "-meijer"].push(obj);
-			object[check_n + "-sams"] = [];
-			object[check_n + "-sams"].push(obj2);
-			console.log(object);
-		} else {
-			scraped = true;
-			//var promises = [];
-
-			scrape(n, test_ip, function(){
-				scrape_sams(n, test_ip, function(){
-					var data = fs.readFileSync(url_meijer);	
-					var data2 = fs.readFileSync(url_sams);
-					var obj = JSON.parse(data);
-					var obj2 = JSON.parse(data2);
-					object[check_n + "-meijer"] = [];
-					object[check_n + "-meijer"].push(obj);
-					object[check_n + "-sams"] = [];
-					object[check_n + "-sams"].push(obj2);
-					if (i == request.body.ingredients.length - 1) {
-						return response.status(200).send(object);
-					}
-					console.log("Gets here 2");
-				});
-			});
-
-			var promises = [
-				new Promise(resolve => scrape(n, test_ip)),
-				new Promise(resolve => scrape_sams(n, test_ip))
-			];
-
-		var promise = new Promise(resolve => scrape(n, test_ip));
-		var promise2 = new Promise(resolve => scrape_sams(n, test_ip));
-		promises.push(promise);
-		promises.push(promise2);
-		
-			var promise = new Promise(function (resolve, reject){
-				scrape(n, test_ip, function(){
-					resolve(true);
-				});
-			});
-			promises.push(promise);
-			var promise2 = new Promise(function (resolve, reject){
-				scrape_sams(n, test_ip, function(){
-					resolve(true);
-				});
-			});
-			promises.push(promise2);
-
-			Promise.all(promises).then(data => {
-					console.log("HERE");
-					var data = fs.readFileSync(url_meijer);	
-					var data2 = fs.readFileSync(url_sams);
-					var obj = JSON.parse(data);
-					var obj2 = JSON.parse(data2);
-					object[check_n + "-meijer"] = [];
-					object[check_n + "-meijer"].push(obj);
-					object[check_n + "-sams"] = [];
-					object[check_n + "-sams"].push(obj2);
-					if (i == request.body.ingredients.length - 1) {
-						return response.status(200).send(object);
-					}
-					console.log("Gets here 2");
-				
-			});
-
-		}
-
-		if (scraped === false && i == request.body.ingredients.length - 1) {
-			console.log("Gets here");
-			return response.status(200).send(object);
-		} else if (scraped === true && i == request.body.ingredients.length - 1) {
-			console.log("Here");
-			Promise.all(promises).then(data => {
-				console.log("Good");
-			});
-
-		}
-	}*/
 }
 
 // Helper function that deletes an account
@@ -570,7 +489,7 @@ function parse_sams($, file_name) {
 		product_name = $(this).find('.img-text').text();
 		product_image = $(this).find('.cardProdImg').attr('src');
 		if (product_image === undefined) {
-			product_image = $(this).find('sc-product-card-image').attr('src');
+			product_image = $(this).find('.sc-product-card-image').attr('src');
 		}
 		list[i] = {
 			name: product_name,
