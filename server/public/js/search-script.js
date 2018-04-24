@@ -6,6 +6,7 @@ var apiFrom = 0;
 var apiTo = 9;
 var apiImg;
 var label;
+var ui;
 
 var recipe_name;
 var temp_data;
@@ -32,7 +33,7 @@ $("#submit1").on("click", function (e) {
 	//Grab the user input from the main word search text box.
 	var userInput = $("#user-input1").val().trim().toLowerCase();
 	userInput = userInput.replace(/ /g, "+");
-
+	ui = userInput;
 	// Integrate user input into our ajax request
 	var searchURL = baseURL + userInput;
 	var w = window.open("/home", "_self");
@@ -64,7 +65,7 @@ $("#submit2").on("click", function (e) {
 	//Grab the user input from the main word search text box.
 	var userInput = $("#user-input2").val().trim().toLowerCase();
 	userInput = userInput.replace(/ /g, "+");
-
+	ui = userInput;
 	// Integrate user input into our ajax request
 	var searchURL = baseURL + userInput;
 	searchRecipe(searchURL);
@@ -82,7 +83,7 @@ $("#submit3").on("click", function (e) {
 	//Grab the user input from the main word search text box.
 	var userInput = $("#user-input3").val().trim().toLowerCase();
 	userInput = userInput.replace(/ /g, "+");
-
+	ui = userInput;
 	// Integrate user input into our ajax request
 	var searchURL = baseURL + userInput;
 	searchRecipe(searchURL);
@@ -100,7 +101,7 @@ $("#submit4").on("click", function (e) {
 	//Grab the user input from the main word search text box.
 	var userInput = $("#user-input4").val().trim().toLowerCase();
 	userInput = userInput.replace(/ /g, "+");
-
+	ui = userInput;
 	// Integrate user input into our ajax request
 	var searchURL = baseURL + userInput;
 	searchRecipe(searchURL);
@@ -120,7 +121,7 @@ $("#submit5").on("click", function (e) {
 	//Grab the user input from the main word search text box.
 	var userInput = $("#user-input5").val().trim().toLowerCase();
 	userInput = userInput.replace(/ /g, "+");
-
+	ui = userInput;
 	// Integrate user input into our ajax request
 	var searchURL = baseURL + userInput;
 	searchRecipe(searchURL);
@@ -128,6 +129,16 @@ $("#submit5").on("click", function (e) {
 	// Clear previous search
 	$("#recipe-content").empty();
 	$("#user-input5").val("");
+	$("#load-more").css("display","initial");
+});
+
+$("#load-more").on("click", function (e) {
+	//alert("loading more:" + baseURL + ui);
+	// Prevent form from submitting
+	e.preventDefault();
+	from+=10;
+	to+=10;
+	searchRecipe(baseURL + ui + "&from=" + apiFrom + "&to=" + apiTo);
 });
 
 function searchRecipe(queryURL) {
@@ -153,8 +164,6 @@ function searchRecipe(queryURL) {
 			spanTitle.addClass("card-title");
 			label = data.hits[i].recipe.label;
 			spanTitle.text(label);
-
-			//var table = "<table><tr><td>Jill</td><td>Smith</td><td>50</td></tr><tr><td>Eve</td><td>Jackson</td><td>94</td></tr><tr><td>John</td><td>Doe</td><td>80</td></tr></table>"
 
 			//Append Name/Label to recipe image
 			cimg.append(spanTitle);
@@ -188,41 +197,8 @@ function searchRecipe(queryURL) {
 			};
 			cimg.after(cardContent);
 
-			//On search page, reveal recipe list on button click
-			img.addClass("activator");
-			activateIngredients = $("<span>");
-			activateIngredients.addClass("card-title activator").text("Ingredients");
-			revealIngredientsIcon = $("<i>"); //button to open ingredients card
-			//Add tooltip text
-			revealIngredientsIcon.addClass("material-icons right tooltipped").attr("data-position", "top").attr("data-tooltip", "Click to view ingredients.");
-			//Init tooltip
-			$('.tooltipped').tooltip({ delay: 30 });
-			activateIngredients.append(revealIngredientsIcon);
-			
-			//Add button to reveal card to the card
-			//cardContent.append(activateIngredients);
-			
-			
-			var cardReveal = $("<div>");
-			cardReveal.addClass("card-reveal");
-			
-			var cardRevealTitle = $("<span>");
-			cardRevealTitle.addClass("card-title").text("Ingredients");
-			
-			var closeRevealIcon = $("<i>"); //Allows for closing of card
-			
-			closeRevealIcon.addClass("material-icons right").text("close");
-			cardRevealTitle.append(closeRevealIcon);
-			cardReveal.append(cardRevealTitle);
-			
-			//Add reveal to the main card
-			
 			c.append(collapse);
 			c.append(pRecipe);
-			//Add the ingredients to the cardReveal card
-			//cardReveal.append(pRecipe);
-			/*var cardAction = $("<div>");
-			cardAction.addClass("card-action");*/
 
 			// Create link to foreign recipie URL for now
 			//needs to take 
@@ -232,15 +208,6 @@ function searchRecipe(queryURL) {
 			link.attr("href", sourceLink);
 			// Open recipie in new tab
 			link.attr("target", "_blank");
-			
-			/*
-			//Create button to favorite a recipe
-			var favoriteButton = $("<i>");
-			favoriteButton.addClass("small fa fa-cutlery tooltipped");
-			favoriteButton.attr("data-name", [i]).attr("data-position", "top").attr("data-tooltip", "Click to save recipe for later.");
-			$('.tooltipped').tooltip({ delay: 30 });
-			*/
-			//cardContent.after(cardAction);
 			
 
 			var viewIngredients = $("<button>");
@@ -252,18 +219,7 @@ function searchRecipe(queryURL) {
 			c.append(viewIngredients);	
 			c.append(link);
 			$("#recipe-content").append(c);
-
-			/*
-			favoriteButton.on("click", function(e) {
-				var n = $(e.target).data("name");
-				var newFavorite = {
-					name: data.hits[n].recipe.label,
-					ingredients: data.hits[n].recipe.ingredientLines,
-					image: data.hits[n].recipe.image
-				};
-				//add newFavorite to database 
-			});
-			*/
+			$("#recipe-content").append("<br/>");
 
 			viewIngredients.on("click", function(e) {
 				var n = $(e.target).data("name");
