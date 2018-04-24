@@ -149,6 +149,16 @@ app.get('/rec', function(request, response) {
 	response.sendFile(path.join(__dirname + html + "recipe.html"));
 });
 
+app.post('/rec', function(request, response) {
+	console.log(request.body);
+	if (!request.body) return response.sendStatus(400);
+	if (Object.keys(request.body).length != 5 || !request.body.calories || !request.body.ingredients || !request.body.name) {
+		return response.status(400).send("Invalid POST request\n");
+	}
+
+	recipe(request, response);
+});
+
 // Called when a POST request is made to /registerAccount
 app.post('/register', function(request, response) {
 	console.log(request.body);
@@ -293,6 +303,19 @@ function submit_recipe(request, response) {
 			counter++;
 		});
 	});
+}
+
+function recipe(request, response) {
+	var description = "None Available";
+	var cost = "To be Added";
+	var $doc = cheerio.load(fs.readFileSync(path.join(__dirname + html + "recipe.html")));
+	var text = '<div class="card-body"><h4 class="card-text">Recipe Title: ' + request.body.name + '</h4><img src="" alt="Recipe Image" /><p class="card-text">Descriptioni:</p><p class="card-text card">' + description + '</p><p class="card-text">Ingredients:</p><p class="card-text"><ul class="list-group">';
+	for (var j = 0; j < Object.keys(request.body.ingredients).length; j++) {
+		text += '<li class="list-group-item">' + request.body.ingredients[j] + '</li>';
+	}
+	text += '</ul></p><p class="card-text">Total Cost: ' + cost + '</p><br/><p class="card-text">Calories: ' + request.body.calories + '</p><p class="card-text">Number of Servings: ' + request.body.servings + '</p><p class="card-text">Procedure:</p><p class="card-text card">' + request.body.url + '</p></div>';
+	$doc('.bg-primary').append(text);
+	return response.status(200).send($doc.html());
 }
 
 function save_recipe(request, response) {

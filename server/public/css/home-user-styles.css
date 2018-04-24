@@ -17,3 +17,12 @@ a.dropdown-item:hover {
 .jumbotron {
     position: relative;
 }
+
+#loading {
+	position: absolute;
+	display: block;
+	left: 50%;
+	top: 50%
+	background: url(../img/lg.double-ring.spinner.gif) no-repeat center center;
+	z-index: 999;
+}
