@@ -270,7 +270,6 @@ function submit_ingredients(){
 	var object = [];
 	$('#ingredient-dropdown').children('select').each(function(){
 		object.push(this.value);
-		alert(this.value);
 	});
 	$.ajax({
 		url: "/rec",
@@ -278,7 +277,7 @@ function submit_ingredients(){
 		data: {
 			"name": temp_data.hits[recipe_name].recipe.label,
 			"ingredients": object,
-			"recipe-image": temp_data.hits[recipe_name].recipe.image,
+			"image": temp_data.hits[recipe_name].recipe.image,
 			"calories": temp_data.hits[recipe_name].recipe.calories,
 			"servings": temp_data.hits[recipe_name].recipe.servings,
 			"url": temp_data.hits[recipe_name].recipe.url
