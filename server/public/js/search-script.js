@@ -6,6 +6,7 @@ var apiFrom = 0;
 var apiTo = 9;
 var apiImg;
 var label;
+
 //    <div class="recipe-c" id=id="recipe-content"></div>
 $("#but").on("click", function (e) {
 	alert("hello");
@@ -257,16 +258,22 @@ function searchRecipe(queryURL) {
 					},
 					success: function(data){
 						var object = JSON.parse(data);
-						alert(object);
-						alert(Object.keys(object).length);
+
 						for (var j = 0; j < Object.keys(object).length; j++) {
+						var text = '<select class="form-control" id="sel1">';
 							var ob = object[Object.keys(object)[j]];
 							for (index in ob[0]) {
-								
-								alert(ob[0][index].image);
-								alert(ob[0][index].name);
-								alert(ob[0][index].cost);
+								text += '<option src="' + ob[0][index].image + '">Meijer: ' + ob[0][index].name + ", Cost: " + ob[0][index].cost + '</option>';
 							}
+							j++;
+							ob = object[Object.keys(object)[j]];
+							for (index in ob[0]) {
+								text += '<option src="' + ob[0][index].image + '">Sam\'s Club: ' + ob[0][index].name + ", Cost: " + ob[0][index].cost + '</option>';
+							}
+					
+
+							text += '</select>';
+							$('#ingredient-dropdown').append(text);
 						}
 					},
 					error: function(error){
@@ -277,3 +284,7 @@ function searchRecipe(queryURL) {
 		};
 	});
 };
+
+function submit_ingredients(){
+
+}

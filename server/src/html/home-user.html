@@ -91,9 +91,10 @@
   
         <!-- Modal body -->
         <div class="modal-body">
-            <form action="/selectIngredients">
+            <form action="javascript:submit_ingredients()">
                 <div class="form-group">
-                    <label for="sel1">Select an ingredient from each dropdown:</label>
+                    <label for="sel1" id="ingredient-dropdown">Select an ingredient from each dropdown:</label>
+									<!--
                     <select class="form-control" id="sel1">
                       <option>1</option>
                       <option>2</option>
@@ -105,7 +106,7 @@
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
-                      </select>
+                      </select>-->
                   </div>
               <button type="submit" class="btn btn-primary">Confirm</button>
             </form>
