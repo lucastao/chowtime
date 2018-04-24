@@ -13,8 +13,10 @@ app.use(body_parser.urlencoded({extended: true}));
 app.use(session({
 	name: 'chowtime-cookie',
 	secret: 'test-secret',
+	proxy: true,
 	resave: false,
-	savedUninitialized: false
+	saveUninitialized: true,
+	maxAge: null
 }));
 
 const { exec } = require('child_process');
@@ -83,16 +85,65 @@ app.get('/', function(request, response) {
 app.get('/home', function(request, response) {
 	response.sendFile(path.join(__dirname + html + "home-user.html"));
 });
+
 app.get('/account', function(request, response) {
 	console.log(request.session.email);
 	var $doc = cheerio.load(fs.readFileSync(path.join(__dirname + html + "account.html")));
-	console.log($doc('#my-email').text(request.session.email));
-	//console.log($doc.html());
-	//response.sendFile(path.join(__dirname + html + "account.html"));
+	$doc('#my-email').text(request.session.email);
 	response.send($doc.html());
 });
+
 app.get('/myrecipes', function(request, response) {
-	response.sendFile(path.join(__dirname + html + "myrecipes.html"));
+	var list = [];
+	recipes.once("value", snapshot => {
+		const recipe = snapshot.val();
+		var counter = 0;
+		var num_recipes = 0;
+		console.log(request.session.email);
+		snapshot.forEach(function(childSnapshot){
+			var key = childSnapshot.val().email;
+			if (key === request.session.email) {
+				var object = {
+					title: childSnapshot.key,
+					description: childSnapshot.val().description,
+					ingredients: childSnapshot.val().ingredients,
+					procedure: childSnapshot.val().procedure
+				};
+				num_recipes++;
+				list.push(object);
+				//response.status(400).send("User already exists.");
+				//return;
+			}
+			if (counter === snapshot.numChildren() - 1) {
+				//createAccount(request, response);
+				//console.log(list);
+				var $doc = cheerio.load(fs.readFileSync(path.join(__dirname + html + "myrecipes.html")));
+				console.log("Num Recipes: " + num_recipes);
+				for (var j = 0; j < num_recipes; j++) {
+					//$doc('.card').append
+					var text = '<div class="card-body" id=card' + j  + '><h4 class="card-text">Recipe Title: ' + list[j].title + '</h4><p class="card-text">Description:</p><p class="card-text card">' + list[j].description +'</p><p class="card-text">Ingredients:</p><p class="card-text"><ul class="list-group">';
+					var arr = list[j].ingredients.split(",");
+					for (var k = 0; k < arr.length; k++) {
+						text += '<li class="list-group-item">' + arr[k];
+						text += '</li>'
+					}
+					text += '</ul></p><p class="card-text">Procedure:</p><p class="card-text card">' + list[j].procedure + '</p></div>';
+					if (j == 0)
+						$doc('.card').append(text);
+					else {
+						var previous = "#card" + (j-1)
+						console.log(previous);
+						$doc(text).insertAfter(previous);
+						text = "";
+					}
+				}
+				console.log($doc.html());
+				response.send($doc.html());
+			}
+			counter++;
+		});
+	});
+	//response.sendFile(path.join(__dirname + html + "myrecipes.html"));
 });
 app.get('/rec', function(request, response) {
 	response.sendFile(path.join(__dirname + html + "recipe.html"));
@@ -108,7 +159,7 @@ app.post('/register', function(request, response) {
 	if (request.body.regPassword.localeCompare(request.body.confPassword) != 0) {
 		return response.status(400).send("Passwords do not match.");
 	}
-	
+
 	console.log("Register request received.");
 	register(request, response);
 });
@@ -246,6 +297,7 @@ function submit_recipe(request, response) {
 
 function save_recipe(request, response) {
 	recipes.child(request.body.name).set({
+		email: request.session.email,
 		description: request.body.description,
 		ingredients: request.body.ingredients,
 		procedure: request.body.procedure
@@ -276,7 +328,7 @@ function find_ingredients(request, response) {
 		console.log(url_meijer);
 		console.log(url_sams);
 		if (fs.existsSync(url_meijer) && fs.existsSync(url_sams)) {
-			var data = fs.readFileSync(url_meijer);	
+			var data = fs.readFileSync(url_meijer);
 			var data2 = fs.readFileSync(url_sams);
 			var obj = JSON.parse(data);
 			var obj2 = JSON.parse(data2);
@@ -306,7 +358,7 @@ function find_ingredients(request, response) {
 			scraped = true;
 			scrape(n, test_ip, function(){
 				scrape_sams(n, test_ip, function(){
-					var data = fs.readFileSync(url_meijer);	
+					var data = fs.readFileSync(url_meijer);
 					var data2 = fs.readFileSync(url_sams);
 					var obj = JSON.parse(data);
 					var obj2 = JSON.parse(data2);
@@ -383,7 +435,7 @@ function parseIngredient(i) {
     var txt = i.replace(/(([0-9]|[ ]|[/]|[.])+)/,""); //remove nuumbers, space, /, and .
     txt = txt.trim();	//trim whitespce
     txt = txt.substr(txt.indexOf(" ") + 1);	//remove next word after (units of measurement)
-	
+
 	//remove before and after "or"
     txt = txt.replace(/[^ ]+ or [^ ]+/, "");
 
