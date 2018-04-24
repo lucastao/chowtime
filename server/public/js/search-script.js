@@ -259,8 +259,11 @@ function searchRecipe(queryURL) {
 					method: "POST",
 					data: {
 						"name": data.hits[n].recipe.label,
-						"ingredients": data.hits[n].recipe.ingredientLines,
-						"image": data.hits[n].recipe.image
+						"ingredients": data.hits[n].recipe.ingredientLines,	//this is an array of ingredients
+						"image": data.hits[n].recipe.image,
+						"url": data.hits[n].recipe.url,
+						"calories": data.hits[n].recipe.calories,
+						"servings": data.hits[n].recipe.yield
 					},
 					success: function(data){
 						var object = JSON.parse(data);
