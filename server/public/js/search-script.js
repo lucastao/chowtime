@@ -206,6 +206,7 @@ function searchRecipe(queryURL) {
 			c.append(viewIngredients);	
 			c.append(link);
 			$("#recipe-content").append(c);
+			$("#recipe-content").append("<br/>");
 
 			viewIngredients.on("click", function(e) {
 				var n = $(e.target).data("name");
