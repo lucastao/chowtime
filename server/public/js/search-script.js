@@ -7,6 +7,18 @@ var apiTo = 9;
 var apiImg;
 var label;
 
+var recipe_name;
+var temp_data;
+
+/*
+$(document).ready(function(){
+	$(document).ajaxStart(function(){
+		$('#loading').show();
+	}).ajaxStop(function(){
+		$('#loading').hide();
+	});
+});*/
+
 //    <div class="recipe-c" id=id="recipe-content"></div>
 $("#but").on("click", function (e) {
 	alert("hello");
@@ -124,6 +136,7 @@ function searchRecipe(queryURL) {
 	.then((resp) => resp.json())
 	.then(function (data) {
 		//for each recipe
+		temp_data = data;
 		for(var i = apiFrom; i < apiTo; i++) {
 			//create card for this recipe
 			var c = $("<div>");
@@ -254,16 +267,19 @@ function searchRecipe(queryURL) {
 
 			viewIngredients.on("click", function(e) {
 				var n = $(e.target).data("name");
+				recipe_name = n;
+				$('#ingredient-dropdown').empty();
 				$.ajax({
 					url: "/findIngredients",
 					method: "POST",
 					data: {
 						"name": data.hits[n].recipe.label,
 						"ingredients": data.hits[n].recipe.ingredientLines,	//this is an array of ingredients
-						"image": data.hits[n].recipe.image,
-						"url": data.hits[n].recipe.url,
-						"calories": data.hits[n].recipe.calories,
-						"servings": data.hits[n].recipe.yield
+						"image": data.hits[n].recipe.image
+						
+						//"url": data.hits[n].recipe.url,
+						//"calories": data.hits[n].recipe.calories,
+						//"servings": data.hits[n].recipe.yield
 					},
 					success: function(data){
 						var object = JSON.parse(data);
@@ -272,12 +288,12 @@ function searchRecipe(queryURL) {
 						var text = '<select class="form-control" id="sel1">';
 							var ob = object[Object.keys(object)[j]];
 							for (index in ob[0]) {
-								text += '<option src="' + ob[0][index].image + '">Meijer: ' + ob[0][index].name + ", Cost: " + ob[0][index].cost + '</option>';
+								text += '<option id="sel1" src="' + ob[0][index].image + '">Meijer: ' + ob[0][index].name + ", Cost: " + ob[0][index].cost + '</option>';
 							}
 							j++;
 							ob = object[Object.keys(object)[j]];
 							for (index in ob[0]) {
-								text += '<option src="' + ob[0][index].image + '">Sam\'s Club: ' + ob[0][index].name + ", Cost: " + ob[0][index].cost + '</option>';
+								text += '<option id="sel1" src="' + ob[0][index].image + '">Sam\'s Club: ' + ob[0][index].name + ", Cost: " + ob[0][index].cost + '</option>';
 							}
 					
 
@@ -295,5 +311,31 @@ function searchRecipe(queryURL) {
 };
 
 function submit_ingredients(){
+	var object = [];
+	$('#ingredient-dropdown').children('select').each(function(){
+		object.push(this.value);
+		alert(this.value);
+	});
+	$.ajax({
+		url: "/rec",
+		method: "POST",
+		data: {
+			"name": temp_data.hits[recipe_name].recipe.label,
+			"ingredients": object,
+			"recipe-image": temp_data.hits[recipe_name].recipe.image,
+			"calories": temp_data.hits[recipe_name].recipe.calories,
+			"servings": temp_data.hits[recipe_name].recipe.servings,
+			"url": temp_data.hits[recipe_name].recipe.url
+		},
+		success: function(data){
+			document.open('text/html');
+			document.write(data);
+			document.close();
+		},
+		error: function(error) {
+			alert(error.responseText);
+		}
+	});
 
+	alert(temp_data.hits[recipe_name].recipe.label);
 }
