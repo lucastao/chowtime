@@ -11,9 +11,8 @@ $("#but").on("click", function (e) {
 	alert("hello");
 });
 
-//Account.html search
+//account.html search
 $("#submit1").on("click", function (e) {
-	//alert("hello");
 	// Prevent form from submitting
 	e.preventDefault();
 
@@ -23,12 +22,24 @@ $("#submit1").on("click", function (e) {
 
 	// Integrate user input into our ajax request
 	var searchURL = baseURL + userInput;
-	searchRecipe(searchURL);
+	var w = window.open("/home", "_self");
+	w.onload = function() {
+		$("#recipe-content", w.document).append("HELLO!");
+		searchRecipe(searchURL);
+	};
+	/*$.ajax({
+		url: "/home#home",
+		type: "GET",
+		success: function(data) {
+			searchRecipe(searchURL);
 
-	// Clear previous search
-	$("#recipe-content").empty();
-	$("#recipe-content2").empty();
-	$("#user-input1").val("");
+			// Clear previous search
+			$("#recipe-content").empty();
+			$("#user-input1").val("");
+			alert("/hello");
+		}
+	});*/
+		
 });
 
 //recipe.html search
@@ -47,7 +58,6 @@ $("#submit2").on("click", function (e) {
 
 	// Clear previous search
 	$("#recipe-content").empty();
-	$("#recipe-content2").empty();
 	$("#user-input2").val("");
 });
 
@@ -66,7 +76,6 @@ $("#submit3").on("click", function (e) {
 
 	// Clear previous search
 	$("#recipe-content").empty();
-	$("#recipe-content2").empty();
 	$("#user-input3").val("");
 });
 
@@ -85,7 +94,6 @@ $("#submit4").on("click", function (e) {
 
 	// Clear previous search
 	$("#recipe-content").empty();
-	$("#recipe-content2").empty();
 	$("#user-input4").val("");
 });
 
@@ -106,7 +114,6 @@ $("#submit5").on("click", function (e) {
 
 	// Clear previous search
 	$("#recipe-content").empty();
-	$("#recipe-content2").empty();
 	$("#user-input5").val("");
 });
 
@@ -231,7 +238,6 @@ function searchRecipe(queryURL) {
 			c.append(viewIngredients);	
 			c.append(link);
 			$("#recipe-content").append(c);
-			$("#recipe-content2").append(c);
 
 			/*
 			favoriteButton.on("click", function(e) {
