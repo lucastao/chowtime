@@ -82,8 +82,8 @@ app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname + html + "login.html"));
 });
 
-app.get('/homeGuest', function(request, response) {
-	response.sendFile(path.join(__dirname + html + "home-guest.html"));
+app.get('/home', function(request, response) {
+	response.sendFile(path.join(__dirname + html + "home-user.html"));
 });
 
 app.get('/account', function(request, response) {
@@ -144,6 +144,9 @@ app.get('/myrecipes', function(request, response) {
 		});
 	});
 	//response.sendFile(path.join(__dirname + html + "myrecipes.html"));
+});
+app.get('/rec', function(request, response) {
+	response.sendFile(path.join(__dirname + html + "recipe.html"));
 });
 
 // Called when a POST request is made to /registerAccount

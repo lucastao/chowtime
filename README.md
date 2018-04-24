@@ -11,12 +11,14 @@ Alex Cvelbar | acvelbar@purdue.edu
 Project Name: ChowTime
 
 Project Description:
-You can input a recipe and it will search for all ingredients required. Then you can mark off the ingredients you already have, and it will compile a list of ingredients you need to buy (from where and prices) and other information such as: cooking procedure, calory count, optional substitutes, total cost, etc...
+You can input a recipe and it will search for all ingredients required. Then you can select the ingredients you prefer and it will tell you the total cost, where you can buy the ingredients and other information such as: cooking procedure, calory count, optional substitutes, total cost, etc...
 
 Technologies:
-- Digital Ocean droplet for cloud server
-- Database: NoSQL (Firebase)
+- Heroku
+- Firebase
 - NodeJS (express framework)
 - HTML5
 - CSS
 - JavaScript
+- jQuery
+- Bootstrap 4
