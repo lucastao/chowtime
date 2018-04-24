@@ -203,6 +203,8 @@ function searchRecipe(queryURL) {
 			viewIngredients.addClass("btn btn-success").text("Find Ingredients");
 			viewIngredients.attr("data-name", [i]);
 			viewIngredients.css("width", "20%");
+			viewIngredients.attr("data-toggle", "modal");
+			viewIngredients.attr("data-target", "#modalIngredients");
 			c.append(viewIngredients);	
 			c.append(link);
 			$("#recipe-content").append(c);

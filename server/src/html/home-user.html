@@ -18,28 +18,28 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <!-- Brand -->
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="/home" method="GET"><img class="img-fluid" src="./img/chowlogo.png" alt="ChowTime"></a>
       
         <!-- Links -->
         <ul class="navbar-nav order-1">
           <li class="nav-item">
-            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link" href="/home#home" method="GET">Home</a>
           </li>
           <li class="nav-item">
-                <a class="nav-link" href="#search">Search Recipe</a>
+                <a class="nav-link" href="/home#search" method="GET">Search Recipe</a>
               </li>
             <li class="nav-item">
-                  <a class="nav-link" href="#search">Create Recipe</a>
+                  <a class="nav-link" href="/home#create" method="GET">Create Recipe</a>
                 </li>
           <li class="nav-item">
-            <a class="nav-link" href="#about">About Us</a>
+            <a class="nav-link" href="/home#about" method="GET">About Us</a>
           </li>
           <li class="nav-item dropdown">
             <a id="ddmember" class="nav-link dropdown-toggle text-primary" data-toggle="dropdown" href="#">Members</a>
             <div class="dropdown-menu bg-dark">
               <a class="dropdown-item text-white" href="/account" method="GET">My Account</a>
-              <a class="dropdown-item text-white" href="#">My Recipes</a>
-              <a class="dropdown-item text-white" href="#create">Create Recipe</a>
+              <a class="dropdown-item text-white" href="/myrecipes" method="GET">My Recipes</a>
+              <a class="dropdown-item text-white" href="/home#create" method="GET">Create Recipe</a>
             </div>
           </li>
         </ul>
@@ -71,12 +71,54 @@
                 <input type="text" class="form-control" id="user-input4" placeholder="Search for recipe...">
                 <div class="input-group-btn">
                     <button class="btn btn-secondary" id="submit4" type="submit">Search</button>
+                    <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#modalIngredients" id="show-ing" type="submit">Show Ingredients</button> -->
                 </div>
                 <div id="recipe-content" class="section"></div>
             </div>
         </div>
     </div>
     
+           <!-- The Modal -->
+<div class="modal fade" id="modalIngredients">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Select your prefered ingredients</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form action="/selectIngredients">
+                <div class="form-group">
+                    <label for="sel1">Select an ingredient from each dropdown:</label>
+                    <select class="form-control" id="sel1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                    <select class="form-control" id="sel1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                  </div>
+              <button type="submit" class="btn btn-primary">Confirm</button>
+            </form>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
     <br/>
     <div class="container-fluid" id="create">
         <!-- create form -->
@@ -86,7 +128,7 @@
                     <form action="javascript:submit_recipe()">
                         <div class="form-group">
                           <label for="formGroupExampleInput">Recipe Name</label>
-                          <input type="text" name="recipe-name" class="form-control" id="formGroupExampleInput" placeholder="Recipe name...">
+                          <input type="text" name="recipe-name" class="form-control" id="formGroupExampleInput" placeholder="Recipe name..." required>
                         </div>
                         <div class="form-group">
                           <label for="formGroupExampleInput2">Description</label>
@@ -94,7 +136,7 @@
                         </div>
                         <div class="form-group">
                           <label for="formGroupExampleInput">Ingredients (please include quantity+units in brackets and seperate each ingredient with a coma and space like below</label>
-                          <input type="text" name="recipe-ingredients" class="form-control" id="formGroupExampleInput" placeholder="example: ground beef (1 pound), onion (1), garlic (4 cloves), ...">
+                          <input type="text" name="recipe-ingredients" class="form-control" id="formGroupExampleInput" placeholder="example: ground beef (1 pound), onion (1), garlic (4 cloves), ..." required>
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Procedure</label>

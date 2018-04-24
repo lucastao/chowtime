@@ -16,48 +16,47 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="load()">
 	<div class="background" id="background"></div>
 	<div class="backdrop"></div>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-        <!-- Brand -->
-        <a class="navbar-brand" href="#">Logo</a>
-      
-        <!-- Links -->
-        <ul class="navbar-nav order-1">
-          <li class="nav-item">
-            <a class="nav-link" href="#home">Home</a>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    <!-- Brand -->
+    <a class="navbar-brand" href="/home" method="GET"><img class="img-fluid" src="./img/chowlogo.png" alt="ChowTime"></a>
+  
+    <!-- Links -->
+    <ul class="navbar-nav order-1">
+      <li class="nav-item">
+        <a class="nav-link" href="/home#home" method="GET">Home</a>
+      </li>
+      <li class="nav-item">
+            <a class="nav-link" href="/home#search" method="GET">Search Recipe</a>
           </li>
-          <li class="nav-item">
-                <a class="nav-link" href="#search">Search Recipe</a>
-              </li>
+        <li class="nav-item">
+              <a class="nav-link" href="/home#create" method="GET">Create Recipe</a>
+            </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/home#about" method="GET">About Us</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a id="ddmember" class="nav-link dropdown-toggle text-primary" data-toggle="dropdown" href="#">Members</a>
+        <div class="dropdown-menu bg-dark">
+          <a class="dropdown-item text-white" href="/account" method="GET">My Account</a>
+          <a class="dropdown-item text-white" href="/myrecipes" method="GET">My Recipes</a>
+          <a class="dropdown-item text-white" href="/home#create" method="GET">Create Recipe</a>
+        </div>
+      </li>
+    </ul>
+    </div>
+    <!-- search form -->
+    <div class="navbar w-100 order-2">
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                  <a class="nav-link" href="#search">Create Recipe</a>
-                </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About Us</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a id="ddmember" class="nav-link dropdown-toggle text-primary" data-toggle="dropdown" href="#">Members</a>
-            <div class="dropdown-menu bg-dark">
-              <a class="dropdown-item text-white" href="#">My Account</a>
-              <a class="dropdown-item text-white" href="#">Favorite Recipes</a>
-              <a class="dropdown-item text-white" href="#">My Recipes</a>
-              <a class="dropdown-item text-white" href="#create">Create Recipe</a>
-            </div>
-          </li>
+                <div class="form-inline">
+                    <input class="form-control mr-sm-2" id="user-input3" type="text" placeholder="Search recipe...">
+                    <button class="btn btn-success" id="submit3" type="submit">Search recipe!</button>
+                </div>
+            </li>
         </ul>
-        </div>
-        <!-- search form -->
-        <div class="navbar w-100 order-2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <form class="form-inline" action="/action_page.php">
-                        <input class="form-control mr-sm-2" id="user-input3" type="text" placeholder="Search recipe...">
-                        <button class="btn btn-success" id="submit3" type="submit">Search recipe</button>
-                    </form>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    </div>
+</nav>
     <div class="card mx-auto" style="width: 400px; margin-top: 50px">
       <div class="card-body">
         <h4 class="card-title">My Account</h4>
