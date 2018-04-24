@@ -279,7 +279,7 @@ function submit_ingredients(){
 			"ingredients": object,
 			"image": temp_data.hits[recipe_name].recipe.image,
 			"calories": temp_data.hits[recipe_name].recipe.calories,
-			"servings": temp_data.hits[recipe_name].recipe.servings,
+			"servings": temp_data.hits[recipe_name].recipe.yield,
 			"url": temp_data.hits[recipe_name].recipe.url
 		},
 		success: function(data){
@@ -292,5 +292,5 @@ function submit_ingredients(){
 		}
 	});
 
-	alert(temp_data.hits[recipe_name].recipe.label);
+	//alert(temp_data.hits[recipe_name].recipe.label);
 }

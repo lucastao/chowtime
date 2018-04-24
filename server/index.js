@@ -13,7 +13,7 @@ app.use(body_parser.urlencoded({extended: true}));
 app.use(session({
 	name: 'chowtime-cookie',
 	secret: 'test-secret',
-	proxy: true,
+	proxy: false,
 	resave: false,
 	saveUninitialized: true,
 	cookie: {
@@ -216,12 +216,22 @@ app.post('/findIngredients', function(request, response){
 
 // Called when a POST request is made to /deleteAccount
 app.post('/deleteAccount', function(request, response) {
+	if (!request.body) return response.sendStatus(400);
 
+	if (Object.keys(request.body).length != 0) {
+		return response.status(400).send("Invalid request");
+	}
+	deleteAccount(request, response);
 });
 
 // Called when a POST request is made to /changePassword
 app.post('/changePassword', function(request, response) {
+	if (!request.body) return response.sendStatus(400);
 
+	if (Object.keys(request.body).length != 2 || !request.body.old || !request.body.pwd) {
+		return response.status(400).send("Invalid request");
+	}
+	changePassword(request, response);
 });
 
 // Called when a POST request is made to /changeEmail
@@ -279,7 +289,7 @@ function login(request, response) {
 				if (request.body.password === childSnapshot.val().password) {
 					request.session.email = request.body.email;
 	
-					get_location(request,request.headers['x-forwarded-for'] || request.connection.remoteAddress);
+					get_location(request,request.headers['x-forwarded-for'] || request.connection.remoteAddress || request.socket.remoteAddress);
 					return response.sendFile(path.join(__dirname + html + "home-user.html"));
 				}
 				return response.status(400).send("Wrong email/password.")
@@ -316,13 +326,36 @@ function submit_recipe(request, response) {
 
 function recipe(request, response) {
 	var description = "None Available";
-	var cost = "To be Added";
+	var cost = 0.0;
+	var price_accuracy = true;
 	var $doc = cheerio.load(fs.readFileSync(path.join(__dirname + html + "recipe.html")));
 	var text = '<div class="card-body"><h4 class="card-text">Recipe Title: ' + request.body.name + '</h4><img src="' + request.body.image + '" alt="Recipe Image" /><p class="card-text">Descriptioni:</p><p class="card-text card">' + description + '</p><p class="card-text">Ingredients:</p><p class="card-text"><ul class="list-group">';
 	for (var j = 0; j < Object.keys(request.body.ingredients).length; j++) {
 		text += '<li class="list-group-item">' + request.body.ingredients[j] + '</li>';
+		var index = request.body.ingredients[j].indexOf('Cost: ') + 6;
+		var money = request.body.ingredients[j].substring(index);
+		money = money.replace(/[^0-9.]/g,'');
+		var converted = parseFloat(money);
+		console.log(converted);
+		if (!isNaN(converted)) {
+			cost += parseFloat(converted); 
+		} else {
+			price_accuracy = false;
+		}
 	}
-	text += '</ul></p><p class="card-text">Total Cost: ' + cost + '</p><p class="card-text">Calories: ' + request.body.calories + '</p><p class="card-text">Number of Servings: ' + request.body.servings + '</p><p class="card-text">Procedure:</p><p class="card-text card">' + request.body.url + '</p><p class="card-text">Closest Meijer:</p><p class="card-text card">' + request.session.meijer + '</p></div>';
+	cost = Math.round(cost*100)/100;
+	var word_format;
+	if (!price_accuracy) {
+		word_format = "~$" + cost.toString() + " (1 or more items did not have a price)"
+	} else 
+		word_format = "~$" + cost.toString();
+/*
+	if (!price_accuracy) {
+		cost = "~$" + cost + " (One or more items did not contain a price)";
+	} else {
+		cost = "~$" + cost;
+	}*/
+	text += '</ul></p><p class="card-text">Total Cost: ' + word_format + '</p><p class="card-text">Calories: ' + request.body.calories + '</p><p class="card-text">Number of Servings: ' + request.body.servings + '</p><p class="card-text">Procedure:</p><p class="card-text card">' + request.body.url + '</p><p class="card-text">Closest Meijer:</p><p class="card-text card">' + request.session.meijer + '</p></div>';
 	$doc('.bg-primary').append(text);
 	return response.status(200).send($doc.html());
 }
@@ -371,6 +404,7 @@ function find_ingredients(request, response) {
 			console.log("No scrape");
 			if (i === request.body.ingredients.length - 1) {
 				//console.log(object);
+/*
 				console.log(Object.keys(object).length);
 				for (var l = 0; l < Object.keys(object).length; l++) {
 					console.log(Object.keys(object)[l])
@@ -380,7 +414,7 @@ function find_ingredients(request, response) {
 						console.log(ob[0][index].name);
 						console.log(ob[0][index].cost);
 					}
-				}
+				}*/
 				//console.log(test);
 				return response.status(200).send(JSON.stringify(object));
 			} else {
@@ -400,16 +434,19 @@ function find_ingredients(request, response) {
 					object[check_n + "-sams"].push(obj2);
 					console.log("Scrape");
 					if (i === request.body.ingredients.length - 1) {
+/*
 						console.log(Object.keys(object).length);
 							for (var j = 0; j < Object.keys(object).length; j++) {
 								console.log(Object.keys(object)[j])
 								var ob = object[Object.keys(object)[j]];
 								for (index in ob[0]) {
+
 									console.log(ob[0][index].image);
+					accounts.child()
 									console.log(ob[0][index].name);
 									console.log(ob[0][index].cost);
 								}
-							}
+							}*/
 						return response.status(200).send(JSON.stringify(object));
 					} else {
 						go(i+1);
@@ -423,11 +460,48 @@ function find_ingredients(request, response) {
 }
 
 // Helper function that deletes an account
-function deleteAccount(u, p, e, response) {
+function deleteAccount(request, response) {
+	accounts.once("value", snapshot => {
+		const users = snapshot.val();
+		var counter = 0;
+		snapshot.forEach(function(childSnapshot){
+			var key = childSnapshot.val().email;
+			if (key === request.session.email) {
+					accounts.child(childSnapshot.key).remove();
+					return response.status(200).sendFile(path.join(__dirname + html + "login.html"));
+			}
+			if (counter === snapshot.numChildren() - 1) {
+				return response.status(400).send("Account does not exist.");
+				//return response.sendFile(path.join(__dirname + html + "login.html"));
+			}
+			counter++;
+		});
+	});
+
 }
 
 // Helper function that changes the password of an account
-function changePassword(u, p, e, n, response) {
+function changePassword(request, response) {
+	accounts.once("value", snapshot => {
+		const users = snapshot.val();
+		var counter = 0;
+		snapshot.forEach(function(childSnapshot){
+			var key = childSnapshot.val().email;
+			if (key === request.session.email) {
+				if (request.body.old === childSnapshot.val().password) {
+					accounts.child(childSnapshot.key).update({password: request.body.pwd});
+					return response.status(200).send("Changed");
+				}
+				return response.status(400).send("Incorrect account information.")
+				//return response.sendFile(path.join(__dirname + html + "login.html"));
+			}
+			if (counter === snapshot.numChildren() - 1) {
+				return response.status(400).send("Account does not exist.");
+				//return response.sendFile(path.join(__dirname + html + "login.html"));
+			}
+			counter++;
+		});
+	});
 }
 
 // Helper function that changes the email of an account

@@ -12,6 +12,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<script src="./js/account.js"></script>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50" onload="load()">
 	<div class="background" id="background"></div>
@@ -75,7 +76,7 @@
   
         <!-- Modal body -->
         <div class="modal-body">
-            <form action="/changepwd">
+            <form action="javascript:change_password()">
               <div class="form-group">
                 <label for="old-pwd">Old Password:</label>
                 <input type="password" class="form-control" id="old-pwd" required>
@@ -101,7 +102,9 @@
     </div>
   </div>
         <br/><br/><hr/>
+			<form action="javascript:delete_account()">
         <button class="btn btn-danger" id="delete-account" type="submit">DELETE ACCOUNT</button>
+			</form>
       </div>
     </div>
 </body>
