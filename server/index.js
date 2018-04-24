@@ -700,15 +700,15 @@ function get_location_sams(ip) {
 	.then((response) => {
 		if (response.status === 200) {
 			const html = response.data;
-			const $ = cheerio.load(html);
-			var address = $('#street_address').html();
-			console.log(address);
-			var city = $('#city').html();
-			console.log(city);
-			var phone = $('#phone').html();
-			console.log(phone);
-			console.log(address + city + phone);
-console.log($('#club-Locator > div > div.selected-club-details > div > div.selected-club-physical-location.clearfix > div > address').find('#street_address').text());
+			const $ = cheerio.load(html);	
+			//console.log(address);
+			//var address = $('#street_address').text();
+			//console.log(address);
+			//var city = $('#city').text();
+			//console.log(city);
+			//var phone = $('#phone').text();
+			//console.log(phone);
+			//console.log(address + city + phone);
 
 
 		}
@@ -720,10 +720,10 @@ app.listen(port, (err) => {
     return console.log('Listen error!', err);
   }
   console.log(`Server listening on port ${port}`);
-	//get_location_sams();
   //scrape("celery", '128.210.106.57');
 	//scrape_sams("celery", '128.210.106.57');
 	//var ip = '64.119.240.0';
 	//var ip = '128.210.106.57';
+	//get_location_sams(ip);
 	//get_location(ip);
 });

@@ -222,6 +222,7 @@ function searchRecipe(queryURL) {
 			$("#recipe-content").append("<br/>");
 
 			viewIngredients.on("click", function(e) {
+				$('#loading').show();
 				var n = $(e.target).data("name");
 				recipe_name = n;
 				$('#ingredient-dropdown').empty();
@@ -239,6 +240,7 @@ function searchRecipe(queryURL) {
 					},
 					success: function(data){
 						var object = JSON.parse(data);
+						$('#loading').hide();
 
 						for (var j = 0; j < Object.keys(object).length; j++) {
 						var text = '<select class="form-control" id="sel1">';
