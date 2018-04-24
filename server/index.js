@@ -152,14 +152,11 @@ app.get('/myrecipes', function(request, response) {
 	});
 	//response.sendFile(path.join(__dirname + html + "myrecipes.html"));
 });
-app.get('/rec', function(request, response) {
-	response.sendFile(path.join(__dirname + html + "recipe.html"));
-});
 
 app.post('/rec', function(request, response) {
 	console.log(request.body);
 	if (!request.body) return response.sendStatus(400);
-	if (Object.keys(request.body).length != 5 || !request.body.calories || !request.body.ingredients || !request.body.name) {
+	if (Object.keys(request.body).length != 6 || !request.body.calories || !request.body.ingredients || !request.body.name) {
 		return response.status(400).send("Invalid POST request\n");
 	}
 
