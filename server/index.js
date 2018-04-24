@@ -80,8 +80,8 @@ app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname + html + "login.html"));
 });
 
-app.get('/homeGuest', function(request, response) {
-	response.sendFile(path.join(__dirname + html + "home-guest.html"));
+app.get('/home', function(request, response) {
+	response.sendFile(path.join(__dirname + html + "home-user.html"));
 });
 app.get('/account', function(request, response) {
 	console.log(request.session.email);
