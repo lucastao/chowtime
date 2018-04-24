@@ -91,6 +91,9 @@ app.get('/account', function(request, response) {
 	//response.sendFile(path.join(__dirname + html + "account.html"));
 	response.send($doc.html());
 });
+app.get('/myrecipes', function(request, response) {
+	response.sendFile(path.join(__dirname + html + "myrecipes.html"));
+});
 
 // Called when a POST request is made to /registerAccount
 app.post('/register', function(request, response) {
