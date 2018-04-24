@@ -11,6 +11,7 @@ $("#but").on("click", function (e) {
 	alert("hello");
 });
 
+//Account.html search
 $("#submit1").on("click", function (e) {
 	//alert("hello");
 	// Prevent form from submitting
@@ -30,6 +31,7 @@ $("#submit1").on("click", function (e) {
 	$("#user-input1").val("");
 });
 
+//recipe.html search
 $("#submit2").on("click", function (e) {
 	//alert("hello");
 	// Prevent form from submitting
@@ -85,6 +87,27 @@ $("#submit4").on("click", function (e) {
 	$("#recipe-content").empty();
 	$("#recipe-content2").empty();
 	$("#user-input4").val("");
+});
+
+
+//myrecipes.html search
+$("#submit5").on("click", function (e) {
+	//alert("hello");
+	// Prevent form from submitting
+	e.preventDefault();
+
+	//Grab the user input from the main word search text box.
+	var userInput = $("#user-input5").val().trim().toLowerCase();
+	userInput = userInput.replace(/ /g, "+");
+
+	// Integrate user input into our ajax request
+	var searchURL = baseURL + userInput;
+	searchRecipe(searchURL);
+
+	// Clear previous search
+	$("#recipe-content").empty();
+	$("#recipe-content2").empty();
+	$("#user-input5").val("");
 });
 
 function searchRecipe(queryURL) {
