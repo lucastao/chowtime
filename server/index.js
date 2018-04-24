@@ -16,7 +16,11 @@ app.use(session({
 	proxy: true,
 	resave: false,
 	saveUninitialized: true,
-	maxAge: null
+	cookie: {
+		secure: false,
+		httpOnly: false,
+		maxAge: null
+	}
 }));
 
 const { exec } = require('child_process');
@@ -42,6 +46,9 @@ const html = "/src/html/";
 const meijer = "https://www.meijer.com/catalog/search_command.cmd?keyword=";
 const meijer_location = "https://www.meijer.com/atstores/main.jsp?icmpid=HeaderYourStores";
 const sams = "https://www.samsclub.com/sams/search/searchResults.jsp?searchCategoryId=all&searchTerm=";
+const sams_location = "https://www.samsclub.com/sams/homepage.jsp"; 
+
+var closest_meijer = "";
 
 // Dynamic scraping allows for parsing based on location
 const dynamic_scrape = false;
@@ -271,6 +278,8 @@ function login(request, response) {
 			if (key === request.body.email) {
 				if (request.body.password === childSnapshot.val().password) {
 					request.session.email = request.body.email;
+	
+					get_location(request,request.headers['x-forwarded-for'] || request.connection.remoteAddress);
 					return response.sendFile(path.join(__dirname + html + "home-user.html"));
 				}
 				return response.status(400).send("Wrong email/password.")
@@ -309,11 +318,11 @@ function recipe(request, response) {
 	var description = "None Available";
 	var cost = "To be Added";
 	var $doc = cheerio.load(fs.readFileSync(path.join(__dirname + html + "recipe.html")));
-	var text = '<div class="card-body"><h4 class="card-text">Recipe Title: ' + request.body.name + '</h4><img src="" alt="Recipe Image" /><p class="card-text">Descriptioni:</p><p class="card-text card">' + description + '</p><p class="card-text">Ingredients:</p><p class="card-text"><ul class="list-group">';
+	var text = '<div class="card-body"><h4 class="card-text">Recipe Title: ' + request.body.name + '</h4><img src="' + request.body.image + '" alt="Recipe Image" /><p class="card-text">Descriptioni:</p><p class="card-text card">' + description + '</p><p class="card-text">Ingredients:</p><p class="card-text"><ul class="list-group">';
 	for (var j = 0; j < Object.keys(request.body.ingredients).length; j++) {
 		text += '<li class="list-group-item">' + request.body.ingredients[j] + '</li>';
 	}
-	text += '</ul></p><p class="card-text">Total Cost: ' + cost + '</p><br/><p class="card-text">Calories: ' + request.body.calories + '</p><p class="card-text">Number of Servings: ' + request.body.servings + '</p><p class="card-text">Procedure:</p><p class="card-text card">' + request.body.url + '</p></div>';
+	text += '</ul></p><p class="card-text">Total Cost: ' + cost + '</p><p class="card-text">Calories: ' + request.body.calories + '</p><p class="card-text">Number of Servings: ' + request.body.servings + '</p><p class="card-text">Procedure:</p><p class="card-text card">' + request.body.url + '</p><p class="card-text">Closest Meijer:</p><p class="card-text card">' + request.session.meijer + '</p></div>';
 	$doc('.bg-primary').append(text);
 	return response.status(200).send($doc.html());
 }
@@ -585,7 +594,7 @@ function parse_sams($, file_name) {
 
 // Obtains the address of the store that meijers believes you are closest to via ip address
 // Will most likely have issues when the server is running from a location different than the user
-function get_location(ip) {
+function get_location(request, ip) {
 	axios({
 		method: 'get',
 		url: meijer_location,
@@ -600,11 +609,37 @@ function get_location(ip) {
 			var state = $('[itemprop="addressRegion"]').text();
 			var post_code = $('[itemprop="postalCode"]').text();
 			var phone = $('[itemprop="telephone"]').text();
+			//console.log(address);
+			//console.log(city);
+			//console.log(state);
+			//console.log(post_code);
+			//console.log(phone);
+			request.session.meijer = address + "\n" + city + ", " + state + " " + post_code + "\n" + phone;
+			request.session.save();
+		}
+	}, (error) => console.log(error));
+}
+
+function get_location_sams(ip) {
+	axios({
+		method: 'get',
+		url: sams_location
+		//headers: {'X-Forwarded-For': ip}
+	})
+	.then((response) => {
+		if (response.status === 200) {
+			const html = response.data;
+			const $ = cheerio.load(html);
+			var address = $('#street_address').html();
 			console.log(address);
+			var city = $('#city').html();
 			console.log(city);
-			console.log(state);
-			console.log(post_code);
+			var phone = $('#phone').html();
 			console.log(phone);
+			console.log(address + city + phone);
+console.log($('#club-Locator > div > div.selected-club-details > div > div.selected-club-physical-location.clearfix > div > address').find('#street_address').text());
+
+
 		}
 	}, (error) => console.log(error));
 }
@@ -614,6 +649,7 @@ app.listen(port, (err) => {
     return console.log('Listen error!', err);
   }
   console.log(`Server listening on port ${port}`);
+	//get_location_sams();
   //scrape("celery", '128.210.106.57');
 	//scrape_sams("celery", '128.210.106.57');
 	//var ip = '64.119.240.0';
