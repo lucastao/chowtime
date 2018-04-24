@@ -1,3 +1,19 @@
 a.dropdown-item:hover {
     color: black !important;
 }
+
+.background {
+	background-image: url('../img/login-bg.jpg');
+}
+.background,
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.jumbotron {
+    position: relative;
+}
